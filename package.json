@@ -1,17 +1,40 @@
 {
-    "buildNpmdoc":"graceful-fs",
+    "author": "kai zhu <kaizhu256@gmail.com>",
+    "buildNpmdoc": "graceful-fs",
+    "description": "api documentation for [graceful-fs (v4.1.11)](https://github.com/isaacs/node-graceful-fs#readme) [![npm package](https://img.shields.io/npm/v/npmdoc-graceful-fs.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-graceful-fs) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-graceful-fs.svg)](https://travis-ci.org/npmdoc/node-npmdoc-graceful-fs)",
     "devDependencies": {
-        "graceful-fs": "*",
         "electron-lite": "kaizhu256/node-electron-lite#alpha",
+        "graceful-fs": "*",
         "utility2": "kaizhu256/node-utility2#alpha"
     },
-    "name":"npmdoc-graceful-fs",
+    "engines": {
+        "node": ">=4.0"
+    },
+    "homepage": "https://github.com/npmdoc/node-npmdoc-graceful-fs",
+    "keywords": [
+        "documentation",
+        "graceful-fs"
+    ],
+    "license": "MIT",
+    "main": "lib.npmdoc_graceful_fs.js",
+    "name": "npmdoc-graceful-fs",
+    "nameAlias": "npmdoc_graceful_fs",
+    "nameOriginal": "npmdoc-graceful-fs",
+    "os": [
+        "darwin",
+        "linux"
+    ],
     "repository": {
         "type": "git",
         "url": "https://github.com/npmdoc/node-npmdoc-graceful-fs.git"
     },
     "scripts": {
-        "build-ci": "utility2 shReadmeTest build_ci.sh"
+        "build-ci": "utility2 shReadmeTest build_ci.sh",
+        "env": "env",
+        "heroku-postbuild": "(set -e; npm install \"kaizhu256/node-utility2#alpha\"; utility2 shDeployHeroku)",
+        "postinstall": "if [ -f npm_scripts.sh ]; then ./npm_scripts.sh postinstall; fi",
+        "start": "(set -e; export PORT=${PORT:-8080}; utility2 start test.js)",
+        "test": "(set -e; export PORT=$(utility2 shServerPortRandom); utility2 test test.js)"
     },
     "version": "0.0.1"
 }
