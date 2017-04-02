@@ -1,0 +1,3722 @@
+<html><head></head><body><div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a href="https://github.com/isaacs/node-graceful-fs#readme">graceful-fs (v4.1.11)</a>
+</h1>
+<h4>A drop-in replacement for fs, making various improvements.</h4>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.graceful-fs">module graceful-fs</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.graceful-fs.FileReadStream">
+            function <span class="apidocSignatureSpan">graceful-fs.</span>FileReadStream
+            <span class="apidocSignatureSpan">(path, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.graceful-fs.FileWriteStream">
+            function <span class="apidocSignatureSpan">graceful-fs.</span>FileWriteStream
+            <span class="apidocSignatureSpan">(path, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.graceful-fs.ReadStream">
+            function <span class="apidocSignatureSpan">graceful-fs.</span>ReadStream
+            <span class="apidocSignatureSpan">(path, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.graceful-fs.Stats">
+            function <span class="apidocSignatureSpan">graceful-fs.</span>Stats
+            <span class="apidocSignatureSpan">( dev, mode, nlink, uid, gid, rdev, blksize, ino, size, blocks, atim_msec, mtim_msec, ctim_msec, birthtim_msec)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.graceful-fs.WriteStream">
+            function <span class="apidocSignatureSpan">graceful-fs.</span>WriteStream
+            <span class="apidocSignatureSpan">(path, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.graceful-fs._toUnixTimestamp">
+            function <span class="apidocSignatureSpan">graceful-fs.</span>_toUnixTimestamp
+            <span class="apidocSignatureSpan">(time)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.graceful-fs.access">
+            function <span class="apidocSignatureSpan">graceful-fs.</span>access
+            <span class="apidocSignatureSpan">(path, mode, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.graceful-fs.accessSync">
+            function <span class="apidocSignatureSpan">graceful-fs.</span>accessSync
+            <span class="apidocSignatureSpan">(path, mode)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.graceful-fs.appendFile">
+            function <span class="apidocSignatureSpan">graceful-fs.</span>appendFile
+            <span class="apidocSignatureSpan">(path, data, options, cb)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.graceful-fs.appendFileSync">
+            function <span class="apidocSignatureSpan">graceful-fs.</span>appendFileSync
+            <span class="apidocSignatureSpan">(path, data, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.graceful-fs.chmod">
+            function <span class="apidocSignatureSpan">graceful-fs.</span>chmod
+            <span class="apidocSignatureSpan">(target, mode, cb)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.graceful-fs.chmodSync">
+            function <span class="apidocSignatureSpan">graceful-fs.</span>chmodSync
+            <span class="apidocSignatureSpan">(target, mode)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.graceful-fs.chown">
+            function <span class="apidocSignatureSpan">graceful-fs.</span>chown
+            <span class="apidocSignatureSpan">(target, uid, gid, cb)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.graceful-fs.chownSync">
+            function <span class="apidocSignatureSpan">graceful-fs.</span>chownSync
+            <span class="apidocSignatureSpan">(target, uid, gid)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.graceful-fs.close">
+            function <span class="apidocSignatureSpan">graceful-fs.</span>close
+            <span class="apidocSignatureSpan">(fd, cb)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.graceful-fs.closeSync">
+            function <span class="apidocSignatureSpan">graceful-fs.</span>closeSync
+            <span class="apidocSignatureSpan">(fd)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.graceful-fs.createReadStream">
+            function <span class="apidocSignatureSpan">graceful-fs.</span>createReadStream
+            <span class="apidocSignatureSpan">(path, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.graceful-fs.createWriteStream">
+            function <span class="apidocSignatureSpan">graceful-fs.</span>createWriteStream
+            <span class="apidocSignatureSpan">(path, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.graceful-fs.exists">
+            function <span class="apidocSignatureSpan">graceful-fs.</span>exists
+            <span class="apidocSignatureSpan">(path, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.graceful-fs.existsSync">
+            function <span class="apidocSignatureSpan">graceful-fs.</span>existsSync
+            <span class="apidocSignatureSpan">(path)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.graceful-fs.fchmod">
+            function <span class="apidocSignatureSpan">graceful-fs.</span>fchmod
+            <span class="apidocSignatureSpan">(target, mode, cb)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.graceful-fs.fchmodSync">
+            function <span class="apidocSignatureSpan">graceful-fs.</span>fchmodSync
+            <span class="apidocSignatureSpan">(target, mode)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.graceful-fs.fchown">
+            function <span class="apidocSignatureSpan">graceful-fs.</span>fchown
+            <span class="apidocSignatureSpan">(target, uid, gid, cb)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.graceful-fs.fchownSync">
+            function <span class="apidocSignatureSpan">graceful-fs.</span>fchownSync
+            <span class="apidocSignatureSpan">(target, uid, gid)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.graceful-fs.fdatasync">
+            function <span class="apidocSignatureSpan">graceful-fs.</span>fdatasync
+            <span class="apidocSignatureSpan">(fd, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.graceful-fs.fdatasyncSync">
+            function <span class="apidocSignatureSpan">graceful-fs.</span>fdatasyncSync
+            <span class="apidocSignatureSpan">(fd)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.graceful-fs.fstat">
+            function <span class="apidocSignatureSpan">graceful-fs.</span>fstat
+            <span class="apidocSignatureSpan">(target, cb)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.graceful-fs.fstatSync">
+            function <span class="apidocSignatureSpan">graceful-fs.</span>fstatSync
+            <span class="apidocSignatureSpan">(target)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.graceful-fs.fsync">
+            function <span class="apidocSignatureSpan">graceful-fs.</span>fsync
+            <span class="apidocSignatureSpan">(fd, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.graceful-fs.fsyncSync">
+            function <span class="apidocSignatureSpan">graceful-fs.</span>fsyncSync
+            <span class="apidocSignatureSpan">(fd)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.graceful-fs.ftruncate">
+            function <span class="apidocSignatureSpan">graceful-fs.</span>ftruncate
+            <span class="apidocSignatureSpan">(fd, len, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.graceful-fs.ftruncateSync">
+            function <span class="apidocSignatureSpan">graceful-fs.</span>ftruncateSync
+            <span class="apidocSignatureSpan">(fd, len)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.graceful-fs.futimes">
+            function <span class="apidocSignatureSpan">graceful-fs.</span>futimes
+            <span class="apidocSignatureSpan">(fd, atime, mtime, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.graceful-fs.futimesSync">
+            function <span class="apidocSignatureSpan">graceful-fs.</span>futimesSync
+            <span class="apidocSignatureSpan">(fd, atime, mtime)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.graceful-fs.gracefulify">
+            function <span class="apidocSignatureSpan">graceful-fs.</span>gracefulify
+            <span class="apidocSignatureSpan">(fs)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.graceful-fs.lchmod">
+            function <span class="apidocSignatureSpan">graceful-fs.</span>lchmod
+            <span class="apidocSignatureSpan">(path, mode, cb)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.graceful-fs.lchmodSync">
+            function <span class="apidocSignatureSpan">graceful-fs.</span>lchmodSync
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.graceful-fs.lchown">
+            function <span class="apidocSignatureSpan">graceful-fs.</span>lchown
+            <span class="apidocSignatureSpan">(path, uid, gid, cb)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.graceful-fs.lchownSync">
+            function <span class="apidocSignatureSpan">graceful-fs.</span>lchownSync
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.graceful-fs.link">
+            function <span class="apidocSignatureSpan">graceful-fs.</span>link
+            <span class="apidocSignatureSpan">(existingPath, newPath, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.graceful-fs.linkSync">
+            function <span class="apidocSignatureSpan">graceful-fs.</span>linkSync
+            <span class="apidocSignatureSpan">(existingPath, newPath)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.graceful-fs.lstat">
+            function <span class="apidocSignatureSpan">graceful-fs.</span>lstat
+            <span class="apidocSignatureSpan">(target, cb)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.graceful-fs.lstatSync">
+            function <span class="apidocSignatureSpan">graceful-fs.</span>lstatSync
+            <span class="apidocSignatureSpan">(target)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.graceful-fs.lutimes">
+            function <span class="apidocSignatureSpan">graceful-fs.</span>lutimes
+            <span class="apidocSignatureSpan">(_a, _b, _c, cb)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.graceful-fs.lutimesSync">
+            function <span class="apidocSignatureSpan">graceful-fs.</span>lutimesSync
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.graceful-fs.mkdir">
+            function <span class="apidocSignatureSpan">graceful-fs.</span>mkdir
+            <span class="apidocSignatureSpan">(path, mode, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.graceful-fs.mkdirSync">
+            function <span class="apidocSignatureSpan">graceful-fs.</span>mkdirSync
+            <span class="apidocSignatureSpan">(path, mode)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.graceful-fs.mkdtemp">
+            function <span class="apidocSignatureSpan">graceful-fs.</span>mkdtemp
+            <span class="apidocSignatureSpan">(prefix, options, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.graceful-fs.mkdtempSync">
+            function <span class="apidocSignatureSpan">graceful-fs.</span>mkdtempSync
+            <span class="apidocSignatureSpan">(prefix, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.graceful-fs.open">
+            function <span class="apidocSignatureSpan">graceful-fs.</span>open
+            <span class="apidocSignatureSpan">(path, flags, mode, cb)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.graceful-fs.openSync">
+            function <span class="apidocSignatureSpan">graceful-fs.</span>openSync
+            <span class="apidocSignatureSpan">(path, flags, mode)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.graceful-fs.read">
+            function <span class="apidocSignatureSpan">graceful-fs.</span>read
+            <span class="apidocSignatureSpan">(fd, buffer, offset, length, position, callback_)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.graceful-fs.readFile">
+            function <span class="apidocSignatureSpan">graceful-fs.</span>readFile
+            <span class="apidocSignatureSpan">(path, options, cb)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.graceful-fs.readFileSync">
+            function <span class="apidocSignatureSpan">graceful-fs.</span>readFileSync
+            <span class="apidocSignatureSpan">(path, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.graceful-fs.readSync">
+            function <span class="apidocSignatureSpan">graceful-fs.</span>readSync
+            <span class="apidocSignatureSpan">(fd, buffer, offset, length, position)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.graceful-fs.readdir">
+            function <span class="apidocSignatureSpan">graceful-fs.</span>readdir
+            <span class="apidocSignatureSpan">(path, options, cb)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.graceful-fs.readdirSync">
+            function <span class="apidocSignatureSpan">graceful-fs.</span>readdirSync
+            <span class="apidocSignatureSpan">(path, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.graceful-fs.readlink">
+            function <span class="apidocSignatureSpan">graceful-fs.</span>readlink
+            <span class="apidocSignatureSpan">(path, options, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.graceful-fs.readlinkSync">
+            function <span class="apidocSignatureSpan">graceful-fs.</span>readlinkSync
+            <span class="apidocSignatureSpan">(path, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.graceful-fs.realpath">
+            function <span class="apidocSignatureSpan">graceful-fs.</span>realpath
+            <span class="apidocSignatureSpan">(p, options, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.graceful-fs.realpathSync">
+            function <span class="apidocSignatureSpan">graceful-fs.</span>realpathSync
+            <span class="apidocSignatureSpan">(p, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.graceful-fs.rename">
+            function <span class="apidocSignatureSpan">graceful-fs.</span>rename
+            <span class="apidocSignatureSpan">(oldPath, newPath, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.graceful-fs.renameSync">
+            function <span class="apidocSignatureSpan">graceful-fs.</span>renameSync
+            <span class="apidocSignatureSpan">(oldPath, newPath)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.graceful-fs.rmdir">
+            function <span class="apidocSignatureSpan">graceful-fs.</span>rmdir
+            <span class="apidocSignatureSpan">(path, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.graceful-fs.rmdirSync">
+            function <span class="apidocSignatureSpan">graceful-fs.</span>rmdirSync
+            <span class="apidocSignatureSpan">(path)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.graceful-fs.stat">
+            function <span class="apidocSignatureSpan">graceful-fs.</span>stat
+            <span class="apidocSignatureSpan">(target, cb)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.graceful-fs.statSync">
+            function <span class="apidocSignatureSpan">graceful-fs.</span>statSync
+            <span class="apidocSignatureSpan">(target)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.graceful-fs.symlink">
+            function <span class="apidocSignatureSpan">graceful-fs.</span>symlink
+            <span class="apidocSignatureSpan">(target, path, type_, callback_)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.graceful-fs.symlinkSync">
+            function <span class="apidocSignatureSpan">graceful-fs.</span>symlinkSync
+            <span class="apidocSignatureSpan">(target, path, type)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.graceful-fs.truncate">
+            function <span class="apidocSignatureSpan">graceful-fs.</span>truncate
+            <span class="apidocSignatureSpan">(path, len, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.graceful-fs.truncateSync">
+            function <span class="apidocSignatureSpan">graceful-fs.</span>truncateSync
+            <span class="apidocSignatureSpan">(path, len)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.graceful-fs.unlink">
+            function <span class="apidocSignatureSpan">graceful-fs.</span>unlink
+            <span class="apidocSignatureSpan">(path, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.graceful-fs.unlinkSync">
+            function <span class="apidocSignatureSpan">graceful-fs.</span>unlinkSync
+            <span class="apidocSignatureSpan">(path)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.graceful-fs.unwatchFile">
+            function <span class="apidocSignatureSpan">graceful-fs.</span>unwatchFile
+            <span class="apidocSignatureSpan">(filename, listener)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.graceful-fs.utimes">
+            function <span class="apidocSignatureSpan">graceful-fs.</span>utimes
+            <span class="apidocSignatureSpan">(path, atime, mtime, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.graceful-fs.utimesSync">
+            function <span class="apidocSignatureSpan">graceful-fs.</span>utimesSync
+            <span class="apidocSignatureSpan">(path, atime, mtime)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.graceful-fs.watch">
+            function <span class="apidocSignatureSpan">graceful-fs.</span>watch
+            <span class="apidocSignatureSpan">(filename, options, listener)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.graceful-fs.watchFile">
+            function <span class="apidocSignatureSpan">graceful-fs.</span>watchFile
+            <span class="apidocSignatureSpan">(filename, options, listener)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.graceful-fs.write">
+            function <span class="apidocSignatureSpan">graceful-fs.</span>write
+            <span class="apidocSignatureSpan">(fd, buffer, offset, length, position, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.graceful-fs.writeFile">
+            function <span class="apidocSignatureSpan">graceful-fs.</span>writeFile
+            <span class="apidocSignatureSpan">(path, data, options, cb)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.graceful-fs.writeFileSync">
+            function <span class="apidocSignatureSpan">graceful-fs.</span>writeFileSync
+            <span class="apidocSignatureSpan">(path, data, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.graceful-fs.writeSync">
+            function <span class="apidocSignatureSpan">graceful-fs.</span>writeSync
+            <span class="apidocSignatureSpan">(fd, buffer, offset, length, position)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">number <span class="apidocSignatureSpan">graceful-fs.</span>F_OK</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">number <span class="apidocSignatureSpan">graceful-fs.</span>R_OK</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">number <span class="apidocSignatureSpan">graceful-fs.</span>W_OK</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">number <span class="apidocSignatureSpan">graceful-fs.</span>X_OK</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">graceful-fs.</span>ReadStream.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">graceful-fs.</span>Stats.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">graceful-fs.</span>WriteStream.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">graceful-fs.</span>constants</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.graceful-fs.ReadStream">module graceful-fs.ReadStream</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.graceful-fs.ReadStream.ReadStream">
+            function <span class="apidocSignatureSpan">graceful-fs.</span>ReadStream
+            <span class="apidocSignatureSpan">(path, options)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.graceful-fs.ReadStream.prototype">module graceful-fs.ReadStream.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.graceful-fs.ReadStream.prototype.open">
+            function <span class="apidocSignatureSpan">graceful-fs.ReadStream.prototype.</span>open
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.graceful-fs.Stats">module graceful-fs.Stats</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.graceful-fs.Stats.Stats">
+            function <span class="apidocSignatureSpan">graceful-fs.</span>Stats
+            <span class="apidocSignatureSpan">( dev, mode, nlink, uid, gid, rdev, blksize, ino, size, blocks, atim_msec, mtim_msec, ctim_msec, birthtim_msec)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.graceful-fs.Stats.prototype">module graceful-fs.Stats.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.graceful-fs.Stats.prototype._checkModeProperty">
+            function <span class="apidocSignatureSpan">graceful-fs.Stats.prototype.</span>_checkModeProperty
+            <span class="apidocSignatureSpan">(property)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.graceful-fs.Stats.prototype.isBlockDevice">
+            function <span class="apidocSignatureSpan">graceful-fs.Stats.prototype.</span>isBlockDevice
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.graceful-fs.Stats.prototype.isCharacterDevice">
+            function <span class="apidocSignatureSpan">graceful-fs.Stats.prototype.</span>isCharacterDevice
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.graceful-fs.Stats.prototype.isDirectory">
+            function <span class="apidocSignatureSpan">graceful-fs.Stats.prototype.</span>isDirectory
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.graceful-fs.Stats.prototype.isFIFO">
+            function <span class="apidocSignatureSpan">graceful-fs.Stats.prototype.</span>isFIFO
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.graceful-fs.Stats.prototype.isFile">
+            function <span class="apidocSignatureSpan">graceful-fs.Stats.prototype.</span>isFile
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.graceful-fs.Stats.prototype.isSocket">
+            function <span class="apidocSignatureSpan">graceful-fs.Stats.prototype.</span>isSocket
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.graceful-fs.Stats.prototype.isSymbolicLink">
+            function <span class="apidocSignatureSpan">graceful-fs.Stats.prototype.</span>isSymbolicLink
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.graceful-fs.WriteStream">module graceful-fs.WriteStream</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.graceful-fs.WriteStream.WriteStream">
+            function <span class="apidocSignatureSpan">graceful-fs.</span>WriteStream
+            <span class="apidocSignatureSpan">(path, options)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.graceful-fs.WriteStream.prototype">module graceful-fs.WriteStream.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.graceful-fs.WriteStream.prototype.open">
+            function <span class="apidocSignatureSpan">graceful-fs.WriteStream.prototype.</span>open
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.graceful-fs" id="apidoc.module.graceful-fs">module graceful-fs</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.graceful-fs.FileReadStream" id="apidoc.element.graceful-fs.FileReadStream">
+        function <span class="apidocSignatureSpan">graceful-fs.</span>FileReadStream
+        <span class="apidocSignatureSpan">(path, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function ReadStream(path, options) {
+  if (this instanceof ReadStream)
+    return fs$ReadStream.apply(this, arguments), this
+  else
+    return ReadStream.apply(Object.create(ReadStream.prototype), arguments)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.graceful-fs.FileWriteStream" id="apidoc.element.graceful-fs.FileWriteStream">
+        function <span class="apidocSignatureSpan">graceful-fs.</span>FileWriteStream
+        <span class="apidocSignatureSpan">(path, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function WriteStream(path, options) {
+  if (this instanceof WriteStream)
+    return fs$WriteStream.apply(this, arguments), this
+  else
+    return WriteStream.apply(Object.create(WriteStream.prototype), arguments)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.graceful-fs.ReadStream" id="apidoc.element.graceful-fs.ReadStream">
+        function <span class="apidocSignatureSpan">graceful-fs.</span>ReadStream
+        <span class="apidocSignatureSpan">(path, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function ReadStream(path, options) {
+  if (this instanceof ReadStream)
+    return fs$ReadStream.apply(this, arguments), this
+  else
+    return ReadStream.apply(Object.create(ReadStream.prototype), arguments)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.graceful-fs.Stats" id="apidoc.element.graceful-fs.Stats">
+        function <span class="apidocSignatureSpan">graceful-fs.</span>Stats
+        <span class="apidocSignatureSpan">( dev, mode, nlink, uid, gid, rdev, blksize, ino, size, blocks, atim_msec, mtim_msec, ctim_msec, birthtim_msec)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Stats( dev, mode, nlink, uid, gid, rdev, blksize, ino, size, blocks, atim_msec, mtim_msec, ctim_msec, birthtim_msec) {
+  this.dev = dev;
+  this.mode = mode;
+  this.nlink = nlink;
+  this.uid = uid;
+  this.gid = gid;
+  this.rdev = rdev;
+  this.blksize = blksize;
+  this.ino = ino;
+  this.size = size;
+  this.blocks = blocks;
+  this.atime = new Date(atim_msec);
+  this.mtime = new Date(mtim_msec);
+  this.ctime = new Date(ctim_msec);
+  this.birthtime = new Date(birthtim_msec);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.graceful-fs.WriteStream" id="apidoc.element.graceful-fs.WriteStream">
+        function <span class="apidocSignatureSpan">graceful-fs.</span>WriteStream
+        <span class="apidocSignatureSpan">(path, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function WriteStream(path, options) {
+  if (this instanceof WriteStream)
+    return fs$WriteStream.apply(this, arguments), this
+  else
+    return WriteStream.apply(Object.create(WriteStream.prototype), arguments)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.graceful-fs._toUnixTimestamp" id="apidoc.element.graceful-fs._toUnixTimestamp">
+        function <span class="apidocSignatureSpan">graceful-fs.</span>_toUnixTimestamp
+        <span class="apidocSignatureSpan">(time)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function toUnixTimestamp(time) {
+  if (typeof time === 'string' &amp;&amp; +time == time) {
+    return +time;
+  }
+  if (typeof time === 'number') {
+    if (!Number.isFinite(time) || time &lt; 0) {
+      return Date.now() / 1000;
+    }
+    return time;
+  }
+  if (util.isDate(time)) {
+    // convert to 123.456 UNIX timestamp
+    return time.getTime() / 1000;
+  }
+  throw new Error('Cannot parse time: ' + time);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.graceful-fs.access" id="apidoc.element.graceful-fs.access">
+        function <span class="apidocSignatureSpan">graceful-fs.</span>access
+        <span class="apidocSignatureSpan">(path, mode, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">access = function (path, mode, callback) {
+  if (typeof mode === 'function') {
+    callback = mode;
+    mode = fs.F_OK;
+  } else if (typeof callback !== 'function') {
+    throw new TypeError('"callback" argument must be a function');
+  }
+
+  if (!nullCheck(path, callback))
+    return;
+
+  mode = mode | 0;
+  var req = new FSReqWrap();
+  req.oncomplete = makeCallback(callback);
+  binding.access(pathModule._makeLong(path), mode, req);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.graceful-fs.accessSync" id="apidoc.element.graceful-fs.accessSync">
+        function <span class="apidocSignatureSpan">graceful-fs.</span>accessSync
+        <span class="apidocSignatureSpan">(path, mode)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">accessSync = function (path, mode) {
+  nullCheck(path);
+
+  if (mode === undefined)
+    mode = fs.F_OK;
+  else
+    mode = mode | 0;
+
+  binding.access(pathModule._makeLong(path), mode);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.graceful-fs.appendFile" id="apidoc.element.graceful-fs.appendFile">
+        function <span class="apidocSignatureSpan">graceful-fs.</span>appendFile
+        <span class="apidocSignatureSpan">(path, data, options, cb)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function appendFile(path, data, options, cb) {
+  if (typeof options === 'function')
+    cb = options, options = null
+
+  return go$appendFile(path, data, options, cb)
+
+  function go$appendFile (path, data, options, cb) {
+    return fs$appendFile(path, data, options, function (err) {
+      if (err &amp;&amp; (err.code === 'EMFILE' || err.code === 'ENFILE'))
+        enqueue([go$appendFile, [path, data, options, cb]])
+      else {
+        if (typeof cb === 'function')
+          cb.apply(this, arguments)
+        retry()
+      }
+    })
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.graceful-fs.appendFileSync" id="apidoc.element.graceful-fs.appendFileSync">
+        function <span class="apidocSignatureSpan">graceful-fs.</span>appendFileSync
+        <span class="apidocSignatureSpan">(path, data, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">appendFileSync = function (path, data, options) {
+  if (!options) {
+    options = { encoding: 'utf8', mode: 0o666, flag: 'a' };
+  } else if (typeof options === 'string') {
+    options = { encoding: options, mode: 0o666, flag: 'a' };
+  } else if (typeof options !== 'object') {
+    throwOptionsError(options);
+  }
+
+  if (!options.flag)
+    options = util._extend({ flag: 'a' }, options);
+
+  // force append behavior when using a supplied file descriptor
+  if (isFd(path))
+    options.flag = 'a';
+
+  fs.writeFileSync(path, data, options);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.graceful-fs.chmod" id="apidoc.element.graceful-fs.chmod">
+        function <span class="apidocSignatureSpan">graceful-fs.</span>chmod
+        <span class="apidocSignatureSpan">(target, mode, cb)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">chmod = function (target, mode, cb) {
+  return orig.call(fs, target, mode, function (er) {
+    if (chownErOk(er)) er = null
+    if (cb) cb.apply(this, arguments)
+  })
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.graceful-fs.chmodSync" id="apidoc.element.graceful-fs.chmodSync">
+        function <span class="apidocSignatureSpan">graceful-fs.</span>chmodSync
+        <span class="apidocSignatureSpan">(target, mode)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">chmodSync = function (target, mode) {
+  try {
+    return orig.call(fs, target, mode)
+  } catch (er) {
+    if (!chownErOk(er)) throw er
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.graceful-fs.chown" id="apidoc.element.graceful-fs.chown">
+        function <span class="apidocSignatureSpan">graceful-fs.</span>chown
+        <span class="apidocSignatureSpan">(target, uid, gid, cb)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">chown = function (target, uid, gid, cb) {
+  return orig.call(fs, target, uid, gid, function (er) {
+    if (chownErOk(er)) er = null
+    if (cb) cb.apply(this, arguments)
+  })
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.graceful-fs.chownSync" id="apidoc.element.graceful-fs.chownSync">
+        function <span class="apidocSignatureSpan">graceful-fs.</span>chownSync
+        <span class="apidocSignatureSpan">(target, uid, gid)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">chownSync = function (target, uid, gid) {
+  try {
+    return orig.call(fs, target, uid, gid)
+  } catch (er) {
+    if (!chownErOk(er)) throw er
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.graceful-fs.close" id="apidoc.element.graceful-fs.close">
+        function <span class="apidocSignatureSpan">graceful-fs.</span>close
+        <span class="apidocSignatureSpan">(fd, cb)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">close = function (fd, cb) {
+  return fs$close.call(fs, fd, function (err) {
+    if (!err)
+      retry()
+
+    if (typeof cb === 'function')
+      cb.apply(this, arguments)
+  })
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    if (err) {
+      if (callback) callback(err)
+      return
+    }
+    // prefer to return the chmod error, if one occurs,
+    // but still try to close, and report closing errors if they occur.
+    fs.fchmod(fd, mode, function (err) {
+      fs.<span class="apidocCodeKeywordSpan">close</span>(fd, function(err2) {
+        if (callback) callback(err || err2)
+      })
+    })
+  })
+}
+
+fs.lchmodSync = function (path, mode) {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.graceful-fs.closeSync" id="apidoc.element.graceful-fs.closeSync">
+        function <span class="apidocSignatureSpan">graceful-fs.</span>closeSync
+        <span class="apidocSignatureSpan">(fd)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">closeSync = function (fd) {
+  // Note that graceful-fs also retries when fs.closeSync() fails.
+  // Looks like a bug to me, although it's probably a harmless one.
+  var rval = fs$closeSync.apply(fs, arguments)
+  retry()
+  return rval
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    if (typeof cb === 'function')
+      cb.apply(this, arguments)
+  })
+}})(fs.close)
+
+module.exports.closeSync =
+fs.closeSync = (function (fs$closeSync) { return function (fd) {
+  // Note that graceful-fs also retries when fs.<span class="apidocCodeKeywordSpan">closeSync</span>() fails.
+  // Looks like a bug to me, although it's probably a harmless one.
+  var rval = fs$closeSync.apply(fs, arguments)
+  retry()
+  return rval
+}})(fs.closeSync)
+
+function patch (fs) {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.graceful-fs.createReadStream" id="apidoc.element.graceful-fs.createReadStream">
+        function <span class="apidocSignatureSpan">graceful-fs.</span>createReadStream
+        <span class="apidocSignatureSpan">(path, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function createReadStream(path, options) {
+  return new ReadStream(path, options)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.graceful-fs.createWriteStream" id="apidoc.element.graceful-fs.createWriteStream">
+        function <span class="apidocSignatureSpan">graceful-fs.</span>createWriteStream
+        <span class="apidocSignatureSpan">(path, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function createWriteStream(path, options) {
+  return new WriteStream(path, options)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.graceful-fs.exists" id="apidoc.element.graceful-fs.exists">
+        function <span class="apidocSignatureSpan">graceful-fs.</span>exists
+        <span class="apidocSignatureSpan">(path, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">exists = function (path, callback) {
+  if (!nullCheck(path, cb)) return;
+  var req = new FSReqWrap();
+  req.oncomplete = cb;
+  binding.stat(pathModule._makeLong(path), req);
+  function cb(err, stats) {
+    if (callback) callback(err ? false : true);
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.graceful-fs.existsSync" id="apidoc.element.graceful-fs.existsSync">
+        function <span class="apidocSignatureSpan">graceful-fs.</span>existsSync
+        <span class="apidocSignatureSpan">(path)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">existsSync = function (path) {
+  try {
+    nullCheck(path);
+    binding.stat(pathModule._makeLong(path), statValues);
+    return true;
+  } catch (e) {
+    return false;
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.graceful-fs.fchmod" id="apidoc.element.graceful-fs.fchmod">
+        function <span class="apidocSignatureSpan">graceful-fs.</span>fchmod
+        <span class="apidocSignatureSpan">(target, mode, cb)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">fchmod = function (target, mode, cb) {
+  return orig.call(fs, target, mode, function (er) {
+    if (chownErOk(er)) er = null
+    if (cb) cb.apply(this, arguments)
+  })
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+         , function (err, fd) {
+    if (err) {
+      if (callback) callback(err)
+      return
+    }
+    // prefer to return the chmod error, if one occurs,
+    // but still try to close, and report closing errors if they occur.
+    fs.<span class="apidocCodeKeywordSpan">fchmod</span>(fd, mode, function (err) {
+      fs.close(fd, function(err2) {
+        if (callback) callback(err || err2)
+      })
+    })
+  })
+}
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.graceful-fs.fchmodSync" id="apidoc.element.graceful-fs.fchmodSync">
+        function <span class="apidocSignatureSpan">graceful-fs.</span>fchmodSync
+        <span class="apidocSignatureSpan">(target, mode)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">fchmodSync = function (target, mode) {
+  try {
+    return orig.call(fs, target, mode)
+  } catch (er) {
+    if (!chownErOk(er)) throw er
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+var fd = fs.openSync(path, constants.O_WRONLY | constants.O_SYMLINK, mode)
+
+// prefer to return the chmod error, if one occurs,
+// but still try to close, and report closing errors if they occur.
+var threw = true
+var ret
+try {
+  ret = fs.<span class="apidocCodeKeywordSpan">fchmodSync</span>(fd, mode)
+  threw = false
+} finally {
+  if (threw) {
+    try {
+      fs.closeSync(fd)
+    } catch (er) {}
+  } else {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.graceful-fs.fchown" id="apidoc.element.graceful-fs.fchown">
+        function <span class="apidocSignatureSpan">graceful-fs.</span>fchown
+        <span class="apidocSignatureSpan">(target, uid, gid, cb)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">fchown = function (target, uid, gid, cb) {
+  return orig.call(fs, target, uid, gid, function (er) {
+    if (chownErOk(er)) er = null
+    if (cb) cb.apply(this, arguments)
+  })
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.graceful-fs.fchownSync" id="apidoc.element.graceful-fs.fchownSync">
+        function <span class="apidocSignatureSpan">graceful-fs.</span>fchownSync
+        <span class="apidocSignatureSpan">(target, uid, gid)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">fchownSync = function (target, uid, gid) {
+  try {
+    return orig.call(fs, target, uid, gid)
+  } catch (er) {
+    if (!chownErOk(er)) throw er
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.graceful-fs.fdatasync" id="apidoc.element.graceful-fs.fdatasync">
+        function <span class="apidocSignatureSpan">graceful-fs.</span>fdatasync
+        <span class="apidocSignatureSpan">(fd, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">fdatasync = function (fd, callback) {
+  var req = new FSReqWrap();
+  req.oncomplete = makeCallback(callback);
+  binding.fdatasync(fd, req);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.graceful-fs.fdatasyncSync" id="apidoc.element.graceful-fs.fdatasyncSync">
+        function <span class="apidocSignatureSpan">graceful-fs.</span>fdatasyncSync
+        <span class="apidocSignatureSpan">(fd)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">fdatasyncSync = function (fd) {
+  return binding.fdatasync(fd);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.graceful-fs.fstat" id="apidoc.element.graceful-fs.fstat">
+        function <span class="apidocSignatureSpan">graceful-fs.</span>fstat
+        <span class="apidocSignatureSpan">(target, cb)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">fstat = function (target, cb) {
+  return orig.call(fs, target, function (er, stats) {
+    if (!stats) return cb.apply(this, arguments)
+    if (stats.uid &lt; 0) stats.uid += 0x100000000
+    if (stats.gid &lt; 0) stats.gid += 0x100000000
+    if (cb) cb.apply(this, arguments)
+  })
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.graceful-fs.fstatSync" id="apidoc.element.graceful-fs.fstatSync">
+        function <span class="apidocSignatureSpan">graceful-fs.</span>fstatSync
+        <span class="apidocSignatureSpan">(target)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">fstatSync = function (target) {
+  var stats = orig.call(fs, target)
+  if (stats.uid &lt; 0) stats.uid += 0x100000000
+  if (stats.gid &lt; 0) stats.gid += 0x100000000
+  return stats;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.graceful-fs.fsync" id="apidoc.element.graceful-fs.fsync">
+        function <span class="apidocSignatureSpan">graceful-fs.</span>fsync
+        <span class="apidocSignatureSpan">(fd, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">fsync = function (fd, callback) {
+  var req = new FSReqWrap();
+  req.oncomplete = makeCallback(callback);
+  binding.fsync(fd, req);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.graceful-fs.fsyncSync" id="apidoc.element.graceful-fs.fsyncSync">
+        function <span class="apidocSignatureSpan">graceful-fs.</span>fsyncSync
+        <span class="apidocSignatureSpan">(fd)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">fsyncSync = function (fd) {
+  return binding.fsync(fd);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.graceful-fs.ftruncate" id="apidoc.element.graceful-fs.ftruncate">
+        function <span class="apidocSignatureSpan">graceful-fs.</span>ftruncate
+        <span class="apidocSignatureSpan">(fd, len, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">ftruncate = function (fd, len, callback) {
+  if (typeof len === 'function') {
+    callback = len;
+    len = 0;
+  } else if (len === undefined) {
+    len = 0;
+  }
+  var req = new FSReqWrap();
+  req.oncomplete = makeCallback(callback);
+  binding.ftruncate(fd, len, req);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.graceful-fs.ftruncateSync" id="apidoc.element.graceful-fs.ftruncateSync">
+        function <span class="apidocSignatureSpan">graceful-fs.</span>ftruncateSync
+        <span class="apidocSignatureSpan">(fd, len)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">ftruncateSync = function (fd, len) {
+  if (len === undefined) {
+    len = 0;
+  }
+  return binding.ftruncate(fd, len);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.graceful-fs.futimes" id="apidoc.element.graceful-fs.futimes">
+        function <span class="apidocSignatureSpan">graceful-fs.</span>futimes
+        <span class="apidocSignatureSpan">(fd, atime, mtime, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">futimes = function (fd, atime, mtime, callback) {
+  atime = toUnixTimestamp(atime);
+  mtime = toUnixTimestamp(mtime);
+  var req = new FSReqWrap();
+  req.oncomplete = makeCallback(callback);
+  binding.futimes(fd, atime, mtime, req);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  if (constants.hasOwnProperty("O_SYMLINK")) {
+fs.lutimes = function (path, at, mt, cb) {
+  fs.open(path, constants.O_SYMLINK, function (er, fd) {
+    if (er) {
+      if (cb) cb(er)
+      return
+    }
+    fs.<span class="apidocCodeKeywordSpan">futimes</span>(fd, at, mt, function (er) {
+      fs.close(fd, function (er2) {
+        if (cb) cb(er || er2)
+      })
+    })
+  })
+}
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.graceful-fs.futimesSync" id="apidoc.element.graceful-fs.futimesSync">
+        function <span class="apidocSignatureSpan">graceful-fs.</span>futimesSync
+        <span class="apidocSignatureSpan">(fd, atime, mtime)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">futimesSync = function (fd, atime, mtime) {
+  atime = toUnixTimestamp(atime);
+  mtime = toUnixTimestamp(mtime);
+  binding.futimes(fd, atime, mtime);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+}
+
+fs.lutimesSync = function (path, at, mt) {
+  var fd = fs.openSync(path, constants.O_SYMLINK)
+  var ret
+  var threw = true
+  try {
+    ret = fs.<span class="apidocCodeKeywordSpan">futimesSync</span>(fd, at, mt)
+    threw = false
+  } finally {
+    if (threw) {
+      try {
+        fs.closeSync(fd)
+      } catch (er) {}
+    } else {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.graceful-fs.gracefulify" id="apidoc.element.graceful-fs.gracefulify">
+        function <span class="apidocSignatureSpan">graceful-fs.</span>gracefulify
+        <span class="apidocSignatureSpan">(fs)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function patch(fs) {
+  // Everything that references the open() function needs to be in here
+  polyfills(fs)
+  fs.gracefulify = patch
+  fs.FileReadStream = ReadStream;  // Legacy name.
+  fs.FileWriteStream = WriteStream;  // Legacy name.
+  fs.createReadStream = createReadStream
+  fs.createWriteStream = createWriteStream
+  var fs$readFile = fs.readFile
+  fs.readFile = readFile
+  function readFile (path, options, cb) {
+    if (typeof options === 'function')
+      cb = options, options = null
+
+    return go$readFile(path, options, cb)
+
+    function go$readFile (path, options, cb) {
+      return fs$readFile(path, options, function (err) {
+        if (err &amp;&amp; (err.code === 'EMFILE' || err.code === 'ENFILE'))
+          enqueue([go$readFile, [path, options, cb]])
+        else {
+          if (typeof cb === 'function')
+            cb.apply(this, arguments)
+          retry()
+        }
+      })
+    }
+  }
+
+  var fs$writeFile = fs.writeFile
+  fs.writeFile = writeFile
+  function writeFile (path, data, options, cb) {
+    if (typeof options === 'function')
+      cb = options, options = null
+
+    return go$writeFile(path, data, options, cb)
+
+    function go$writeFile (path, data, options, cb) {
+      return fs$writeFile(path, data, options, function (err) {
+        if (err &amp;&amp; (err.code === 'EMFILE' || err.code === 'ENFILE'))
+          enqueue([go$writeFile, [path, data, options, cb]])
+        else {
+          if (typeof cb === 'function')
+            cb.apply(this, arguments)
+          retry()
+        }
+      })
+    }
+  }
+
+  var fs$appendFile = fs.appendFile
+  if (fs$appendFile)
+    fs.appendFile = appendFile
+  function appendFile (path, data, options, cb) {
+    if (typeof options === 'function')
+      cb = options, options = null
+
+    return go$appendFile(path, data, options, cb)
+
+    function go$appendFile (path, data, options, cb) {
+      return fs$appendFile(path, data, options, function (err) {
+        if (err &amp;&amp; (err.code === 'EMFILE' || err.code === 'ENFILE'))
+          enqueue([go$appendFile, [path, data, options, cb]])
+        else {
+          if (typeof cb === 'function')
+            cb.apply(this, arguments)
+          retry()
+        }
+      })
+    }
+  }
+
+  var fs$readdir = fs.readdir
+  fs.readdir = readdir
+  function readdir (path, options, cb) {
+    var args = [path]
+    if (typeof options !== 'function') {
+      args.push(options)
+    } else {
+      cb = options
+    }
+    args.push(go$readdir$cb)
+
+    return go$readdir(args)
+
+    function go$readdir$cb (err, files) {
+      if (files &amp;&amp; files.sort)
+        files.sort()
+
+      if (err &amp;&amp; (err.code === 'EMFILE' || err.code === 'ENFILE'))
+        enqueue([go$readdir, [args]])
+      else {
+        if (typeof cb === 'function')
+          cb.apply(this, arguments)
+        retry()
+      }
+    }
+  }
+
+  function go$readdir (args) {
+    return fs$readdir.apply(fs, args)
+  }
+
+  if (process.version.substr(0, 4) === 'v0.8') {
+    var legStreams = legacy(fs)
+    ReadStream = legStreams.ReadStream
+    WriteStream = legStreams.WriteStream
+  }
+
+  var fs$ReadStream = fs.ReadStream
+  ReadStream.prototype = Object.create(fs$ReadStream.prototype)
+  ReadStream.prototype.open = ReadStream$open
+
+  var fs$WriteStream = fs.WriteStream
+  WriteStream.prototype = Object.create(fs$WriteStream.prototype)
+  WriteStream.prototype.open = WriteStream$open
+
+  fs.ReadStream = ReadStream
+  fs.WriteStream = WriteStream
+
+  function ReadStream (path, options) {
+    if (this instanceof ReadStream)
+      return fs$ReadStream.apply(this, arguments), this
+    else
+      return ReadStream.apply(Object.create(ReadStream.prototype), arguments)
+  }
+
+  function ReadStream$open () {
+    var that = this
+    open(that.path, that.flags, that.mode, function (err, fd) {
+      if (err) {
+        if (that.autoClose)
+          that.destroy()
+
+        that.emit('error', err)
+      } else {
+        that.fd = fd
+        that.emit('open', fd)
+        that.read()
+      }
+    })
+  }
+
+  function WriteStream (path, options) {
+    if (this instanceof WriteStream)
+      return fs$WriteStream.apply(this, arguments), this
+    else
+      return W ...</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+If you want to patch the global fs module (or any other fs-like
+module) you can do this:
+
+```javascript
+// Make sure to read the caveat below.
+var realFs = require('fs')
+var gracefulFs = require('graceful-fs')
+gracefulFs.<span class="apidocCodeKeywordSpan">gracefulify</span>(realFs)
+```
+
+This should only ever be done at the top-level application layer, in
+order to delay on EMFILE errors from any fs-using dependencies.  You
+should **not** do this in a library, because it can cause unexpected
+delays in other parts of the program.
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.graceful-fs.lchmod" id="apidoc.element.graceful-fs.lchmod">
+        function <span class="apidocSignatureSpan">graceful-fs.</span>lchmod
+        <span class="apidocSignatureSpan">(path, mode, cb)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">lchmod = function (path, mode, cb) {
+  if (cb) process.nextTick(cb)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.graceful-fs.lchmodSync" id="apidoc.element.graceful-fs.lchmodSync">
+        function <span class="apidocSignatureSpan">graceful-fs.</span>lchmodSync
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">lchmodSync = function () {}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.graceful-fs.lchown" id="apidoc.element.graceful-fs.lchown">
+        function <span class="apidocSignatureSpan">graceful-fs.</span>lchown
+        <span class="apidocSignatureSpan">(path, uid, gid, cb)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">lchown = function (path, uid, gid, cb) {
+  if (cb) process.nextTick(cb)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.graceful-fs.lchownSync" id="apidoc.element.graceful-fs.lchownSync">
+        function <span class="apidocSignatureSpan">graceful-fs.</span>lchownSync
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">lchownSync = function () {}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.graceful-fs.link" id="apidoc.element.graceful-fs.link">
+        function <span class="apidocSignatureSpan">graceful-fs.</span>link
+        <span class="apidocSignatureSpan">(existingPath, newPath, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">link = function (existingPath, newPath, callback) {
+  callback = makeCallback(callback);
+  if (!nullCheck(existingPath, callback)) return;
+  if (!nullCheck(newPath, callback)) return;
+
+  var req = new FSReqWrap();
+  req.oncomplete = callback;
+
+  binding.link(pathModule._makeLong(existingPath),
+               pathModule._makeLong(newPath),
+               req);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.graceful-fs.linkSync" id="apidoc.element.graceful-fs.linkSync">
+        function <span class="apidocSignatureSpan">graceful-fs.</span>linkSync
+        <span class="apidocSignatureSpan">(existingPath, newPath)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">linkSync = function (existingPath, newPath) {
+  nullCheck(existingPath);
+  nullCheck(newPath);
+  return binding.link(pathModule._makeLong(existingPath),
+                      pathModule._makeLong(newPath));
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.graceful-fs.lstat" id="apidoc.element.graceful-fs.lstat">
+        function <span class="apidocSignatureSpan">graceful-fs.</span>lstat
+        <span class="apidocSignatureSpan">(target, cb)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">lstat = function (target, cb) {
+  return orig.call(fs, target, function (er, stats) {
+    if (!stats) return cb.apply(this, arguments)
+    if (stats.uid &lt; 0) stats.uid += 0x100000000
+    if (stats.gid &lt; 0) stats.gid += 0x100000000
+    if (cb) cb.apply(this, arguments)
+  })
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.graceful-fs.lstatSync" id="apidoc.element.graceful-fs.lstatSync">
+        function <span class="apidocSignatureSpan">graceful-fs.</span>lstatSync
+        <span class="apidocSignatureSpan">(target)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">lstatSync = function (target) {
+  var stats = orig.call(fs, target)
+  if (stats.uid &lt; 0) stats.uid += 0x100000000
+  if (stats.gid &lt; 0) stats.gid += 0x100000000
+  return stats;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.graceful-fs.lutimes" id="apidoc.element.graceful-fs.lutimes">
+        function <span class="apidocSignatureSpan">graceful-fs.</span>lutimes
+        <span class="apidocSignatureSpan">(_a, _b, _c, cb)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">lutimes = function (_a, _b, _c, cb) { if (cb) process.nextTick(cb) }</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.graceful-fs.lutimesSync" id="apidoc.element.graceful-fs.lutimesSync">
+        function <span class="apidocSignatureSpan">graceful-fs.</span>lutimesSync
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">lutimesSync = function () {}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.graceful-fs.mkdir" id="apidoc.element.graceful-fs.mkdir">
+        function <span class="apidocSignatureSpan">graceful-fs.</span>mkdir
+        <span class="apidocSignatureSpan">(path, mode, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">mkdir = function (path, mode, callback) {
+  if (typeof mode === 'function') callback = mode;
+  callback = makeCallback(callback);
+  if (!nullCheck(path, callback)) return;
+  var req = new FSReqWrap();
+  req.oncomplete = callback;
+  binding.mkdir(pathModule._makeLong(path),
+                modeNum(mode, 0o777),
+                req);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.graceful-fs.mkdirSync" id="apidoc.element.graceful-fs.mkdirSync">
+        function <span class="apidocSignatureSpan">graceful-fs.</span>mkdirSync
+        <span class="apidocSignatureSpan">(path, mode)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">mkdirSync = function (path, mode) {
+  nullCheck(path);
+  return binding.mkdir(pathModule._makeLong(path),
+                       modeNum(mode, 0o777));
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.graceful-fs.mkdtemp" id="apidoc.element.graceful-fs.mkdtemp">
+        function <span class="apidocSignatureSpan">graceful-fs.</span>mkdtemp
+        <span class="apidocSignatureSpan">(prefix, options, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">mkdtemp = function (prefix, options, callback) {
+  if (!prefix || typeof prefix !== 'string')
+    throw new TypeError('filename prefix is required');
+
+  options = options || {};
+  if (typeof options === 'function') {
+    callback = options;
+    options = {};
+  } else if (typeof options === 'string') {
+    options = {encoding: options};
+  }
+  if (typeof options !== 'object')
+    throw new TypeError('"options" must be a string or an object');
+
+  callback = makeCallback(callback);
+  if (!nullCheck(prefix, callback)) {
+    return;
+  }
+
+  var req = new FSReqWrap();
+  req.oncomplete = callback;
+
+  binding.mkdtemp(prefix + 'XXXXXX', options.encoding, req);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.graceful-fs.mkdtempSync" id="apidoc.element.graceful-fs.mkdtempSync">
+        function <span class="apidocSignatureSpan">graceful-fs.</span>mkdtempSync
+        <span class="apidocSignatureSpan">(prefix, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">mkdtempSync = function (prefix, options) {
+  if (!prefix || typeof prefix !== 'string')
+    throw new TypeError('filename prefix is required');
+
+  options = options || {};
+  if (typeof options === 'string')
+    options = {encoding: options};
+  if (typeof options !== 'object')
+    throw new TypeError('"options" must be a string or an object');
+  nullCheck(prefix);
+
+  return binding.mkdtemp(prefix + 'XXXXXX', options.encoding);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.graceful-fs.open" id="apidoc.element.graceful-fs.open">
+        function <span class="apidocSignatureSpan">graceful-fs.</span>open
+        <span class="apidocSignatureSpan">(path, flags, mode, cb)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function open(path, flags, mode, cb) {
+  if (typeof mode === 'function')
+    cb = mode, mode = null
+
+  return go$open(path, flags, mode, cb)
+
+  function go$open (path, flags, mode, cb) {
+    return fs$open(path, flags, mode, function (err, fd) {
+      if (err &amp;&amp; (err.code === 'EMFILE' || err.code === 'ENFILE'))
+        enqueue([go$open, [path, flags, mode, cb]])
+      else {
+        if (typeof cb === 'function')
+          cb.apply(this, arguments)
+        retry()
+      }
+    })
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    if (this.fd !== null) {
+process.nextTick(function() {
+  self._read();
+});
+return;
+    }
+
+    fs.<span class="apidocCodeKeywordSpan">open</span>(this.path, this.flags, this.mode, function (err, fd) {
+if (err) {
+  self.emit('error', err);
+  self.readable = false;
+  return;
+}
+
+self.fd = fd;
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.graceful-fs.openSync" id="apidoc.element.graceful-fs.openSync">
+        function <span class="apidocSignatureSpan">graceful-fs.</span>openSync
+        <span class="apidocSignatureSpan">(path, flags, mode)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">openSync = function (path, flags, mode) {
+  mode = modeNum(mode, 0o666);
+  nullCheck(path);
+  return binding.open(pathModule._makeLong(path), stringToFlags(flags), mode);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+      if (callback) callback(err || err2)
+    })
+  })
+})
+  }
+
+  fs.lchmodSync = function (path, mode) {
+var fd = fs.<span class="apidocCodeKeywordSpan">openSync</span>(path, constants.O_WRONLY | constants.O_SYMLINK, mode)
+
+// prefer to return the chmod error, if one occurs,
+// but still try to close, and report closing errors if they occur.
+var threw = true
+var ret
+try {
+  ret = fs.fchmodSync(fd, mode)
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.graceful-fs.read" id="apidoc.element.graceful-fs.read">
+        function <span class="apidocSignatureSpan">graceful-fs.</span>read
+        <span class="apidocSignatureSpan">(fd, buffer, offset, length, position, callback_)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">read = function (fd, buffer, offset, length, position, callback_) {
+  var callback
+  if (callback_ &amp;&amp; typeof callback_ === 'function') {
+    var eagCounter = 0
+    callback = function (er, _, __) {
+      if (er &amp;&amp; er.code === 'EAGAIN' &amp;&amp; eagCounter &lt; 10) {
+        eagCounter ++
+        return fs$read.call(fs, fd, buffer, offset, length, position, callback)
+      }
+      callback_.apply(this, arguments)
+    }
+  }
+  return fs$read.call(fs, fd, buffer, offset, length, position, callback)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+      if (that.autoClose)
+        that.destroy()
+
+      that.emit('error', err)
+    } else {
+      that.fd = fd
+      that.emit('open', fd)
+      that.<span class="apidocCodeKeywordSpan">read</span>()
+    }
+  })
+}
+
+function WriteStream (path, options) {
+  if (this instanceof WriteStream)
+    return fs$WriteStream.apply(this, arguments), this
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.graceful-fs.readFile" id="apidoc.element.graceful-fs.readFile">
+        function <span class="apidocSignatureSpan">graceful-fs.</span>readFile
+        <span class="apidocSignatureSpan">(path, options, cb)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function readFile(path, options, cb) {
+  if (typeof options === 'function')
+    cb = options, options = null
+
+  return go$readFile(path, options, cb)
+
+  function go$readFile (path, options, cb) {
+    return fs$readFile(path, options, function (err) {
+      if (err &amp;&amp; (err.code === 'EMFILE' || err.code === 'ENFILE'))
+        enqueue([go$readFile, [path, options, cb]])
+      else {
+        if (typeof cb === 'function')
+          cb.apply(this, arguments)
+        retry()
+      }
+    })
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.graceful-fs.readFileSync" id="apidoc.element.graceful-fs.readFileSync">
+        function <span class="apidocSignatureSpan">graceful-fs.</span>readFileSync
+        <span class="apidocSignatureSpan">(path, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">readFileSync = function (path, options) {
+  if (!options) {
+    options = { encoding: null, flag: 'r' };
+  } else if (typeof options === 'string') {
+    options = { encoding: options, flag: 'r' };
+  } else if (typeof options !== 'object') {
+    throwOptionsError(options);
+  }
+
+  var encoding = options.encoding;
+  assertEncoding(encoding);
+
+  var flag = options.flag || 'r';
+  var isUserFd = isFd(path); // file descriptor ownership
+  var fd = isUserFd ? path : fs.openSync(path, flag, 0o666);
+
+  var st = tryStatSync(fd, isUserFd);
+  var size = st.isFile() ? st.size : 0;
+  var pos = 0;
+  var buffer; // single buffer with file data
+  var buffers; // list for when size is unknown
+
+  if (size === 0) {
+    buffers = [];
+  } else {
+    buffer = tryCreateBuffer(size, fd, isUserFd);
+  }
+
+  var bytesRead;
+
+  if (size !== 0) {
+    do {
+      bytesRead = tryReadSync(fd, isUserFd, buffer, pos, size - pos);
+      pos += bytesRead;
+    } while (bytesRead !== 0 &amp;&amp; pos &lt; size);
+  } else {
+    do {
+      // the kernel lies about many files.
+      // Go ahead and try to read some bytes.
+      buffer = Buffer.allocUnsafe(8192);
+      bytesRead = tryReadSync(fd, isUserFd, buffer, 0, 8192);
+      if (bytesRead !== 0) {
+        buffers.push(buffer.slice(0, bytesRead));
+      }
+      pos += bytesRead;
+    } while (bytesRead !== 0);
+  }
+
+  if (!isUserFd)
+    fs.closeSync(fd);
+
+  if (size === 0) {
+    // data was collected into the buffers list.
+    buffer = Buffer.concat(buffers, pos);
+  } else if (pos &lt; size) {
+    buffer = buffer.slice(0, pos);
+  }
+
+  if (encoding) buffer = buffer.toString(encoding);
+  return buffer;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+## USAGE
+
+```javascript
+// use just like fs
+var fs = require('graceful-fs')
+
+// now go and do stuff with it...
+fs.<span class="apidocCodeKeywordSpan">readFileSync</span>('some-file-or-whatever')
+```
+
+## Global Patching
+
+If you want to patch the global fs module (or any other fs-like
+module) you can do this:
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.graceful-fs.readSync" id="apidoc.element.graceful-fs.readSync">
+        function <span class="apidocSignatureSpan">graceful-fs.</span>readSync
+        <span class="apidocSignatureSpan">(fd, buffer, offset, length, position)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">readSync = function (fd, buffer, offset, length, position) {
+  var eagCounter = 0
+  while (true) {
+    try {
+      return fs$readSync.call(fs, fd, buffer, offset, length, position)
+    } catch (er) {
+      if (er.code === 'EAGAIN' &amp;&amp; eagCounter &lt; 10) {
+        eagCounter ++
+        continue
+      }
+      throw er
+    }
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.graceful-fs.readdir" id="apidoc.element.graceful-fs.readdir">
+        function <span class="apidocSignatureSpan">graceful-fs.</span>readdir
+        <span class="apidocSignatureSpan">(path, options, cb)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function readdir(path, options, cb) {
+  var args = [path]
+  if (typeof options !== 'function') {
+    args.push(options)
+  } else {
+    cb = options
+  }
+  args.push(go$readdir$cb)
+
+  return go$readdir(args)
+
+  function go$readdir$cb (err, files) {
+    if (files &amp;&amp; files.sort)
+      files.sort()
+
+    if (err &amp;&amp; (err.code === 'EMFILE' || err.code === 'ENFILE'))
+      enqueue([go$readdir, [args]])
+    else {
+      if (typeof cb === 'function')
+        cb.apply(this, arguments)
+      retry()
+    }
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.graceful-fs.readdirSync" id="apidoc.element.graceful-fs.readdirSync">
+        function <span class="apidocSignatureSpan">graceful-fs.</span>readdirSync
+        <span class="apidocSignatureSpan">(path, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">readdirSync = function (path, options) {
+  options = options || {};
+  if (typeof options === 'string')
+    options = {encoding: options};
+  if (typeof options !== 'object')
+    throw new TypeError('"options" must be a string or an object');
+  nullCheck(path);
+  return binding.readdir(pathModule._makeLong(path), options.encoding);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.graceful-fs.readlink" id="apidoc.element.graceful-fs.readlink">
+        function <span class="apidocSignatureSpan">graceful-fs.</span>readlink
+        <span class="apidocSignatureSpan">(path, options, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">readlink = function (path, options, callback) {
+  options = options || {};
+  if (typeof options === 'function') {
+    callback = options;
+    options = {};
+  } else if (typeof options === 'string') {
+    options = {encoding: options};
+  }
+  if (typeof options !== 'object')
+    throw new TypeError('"options" must be a string or an object');
+  callback = makeCallback(callback);
+  if (!nullCheck(path, callback)) return;
+  var req = new FSReqWrap();
+  req.oncomplete = callback;
+  binding.readlink(pathModule._makeLong(path), options.encoding, req);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.graceful-fs.readlinkSync" id="apidoc.element.graceful-fs.readlinkSync">
+        function <span class="apidocSignatureSpan">graceful-fs.</span>readlinkSync
+        <span class="apidocSignatureSpan">(path, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">readlinkSync = function (path, options) {
+  options = options || {};
+  if (typeof options === 'string')
+    options = {encoding: options};
+  if (typeof options !== 'object')
+    throw new TypeError('"options" must be a string or an object');
+  nullCheck(path);
+  return binding.readlink(pathModule._makeLong(path), options.encoding);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.graceful-fs.realpath" id="apidoc.element.graceful-fs.realpath">
+        function <span class="apidocSignatureSpan">graceful-fs.</span>realpath
+        <span class="apidocSignatureSpan">(p, options, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function realpath(p, options, callback) {
+  if (typeof callback !== 'function') {
+    callback = maybeCallback(options);
+    options = {};
+  }
+
+  if (!options) {
+    options = {};
+  } else if (typeof options === 'function') {
+    options = {};
+  } else if (typeof options === 'string') {
+    options = {encoding: options};
+  } else if (typeof options !== 'object') {
+    throw new TypeError('"options" must be a string or an object');
+  }
+  if (!nullCheck(p, callback))
+    return;
+
+  p = p.toString('utf8');
+  p = pathModule.resolve(p);
+
+  const seenLinks = {};
+  const knownHard = {};
+
+  // current character position in p
+  var pos;
+  // the partial path so far, including a trailing slash if any
+  var current;
+  // the partial path without a trailing slash (except when pointing at a root)
+  var base;
+  // the partial path scanned in the previous round, with slash
+  var previous;
+
+  start();
+
+  function start() {
+    // Skip over roots
+    var m = splitRootRe.exec(p);
+    pos = m[0].length;
+    current = m[0];
+    base = m[0];
+    previous = '';
+
+    // On windows, check that the root exists. On unix there is no need.
+    if (isWindows &amp;&amp; !knownHard[base]) {
+      fs.lstat(base, function(err) {
+        if (err) return callback(err);
+        knownHard[base] = true;
+        LOOP();
+      });
+    } else {
+      process.nextTick(LOOP);
+    }
+  }
+
+  // walk down the path, swapping out linked pathparts for their real
+  // values
+  function LOOP() {
+    // stop if scanned past end of path
+    if (pos &gt;= p.length) {
+      return callback(null, encodeRealpathResult(p, options));
+    }
+
+    // find the next part
+    nextPartRe.lastIndex = pos;
+    var result = nextPartRe.exec(p);
+    previous = current;
+    current += result[0];
+    base = previous + result[1];
+    pos = nextPartRe.lastIndex;
+
+    // continue if not a symlink
+    if (knownHard[base]) {
+      return process.nextTick(LOOP);
+    }
+
+    return fs.lstat(base, gotStat);
+  }
+
+  function gotStat(err, stat) {
+    if (err) return callback(err);
+
+    // if not a symlink, skip to the next path part
+    if (!stat.isSymbolicLink()) {
+      knownHard[base] = true;
+      return process.nextTick(LOOP);
+    }
+
+    // stat &amp; read the link if not read before
+    // call gotTarget as soon as the link target is known
+    // dev/ino always return 0 on windows, so skip the check.
+    let id;
+    if (!isWindows) {
+      id = `${stat.dev.toString(32)}:${stat.ino.toString(32)}`;
+      if (seenLinks.hasOwnProperty(id)) {
+        return gotTarget(null, seenLinks[id], base);
+      }
+    }
+    fs.stat(base, function(err) {
+      if (err) return callback(err);
+
+      fs.readlink(base, function(err, target) {
+        if (!isWindows) seenLinks[id] = target;
+        gotTarget(err, target);
+      });
+    });
+  }
+
+  function gotTarget(err, target, base) {
+    if (err) return callback(err);
+
+    var resolvedLink = pathModule.resolve(previous, target);
+    gotResolvedLink(resolvedLink);
+  }
+
+  function gotResolvedLink(resolvedLink) {
+    // resolve the link, then start over
+    p = pathModule.resolve(resolvedLink, p.slice(pos));
+    start();
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.graceful-fs.realpathSync" id="apidoc.element.graceful-fs.realpathSync">
+        function <span class="apidocSignatureSpan">graceful-fs.</span>realpathSync
+        <span class="apidocSignatureSpan">(p, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function realpathSync(p, options) {
+  if (!options)
+    options = {};
+  else if (typeof options === 'string')
+    options = {encoding: options};
+  else if (typeof options !== 'object')
+    throw new TypeError('"options" must be a string or an object');
+  nullCheck(p);
+
+  p = p.toString('utf8');
+  p = pathModule.resolve(p);
+
+  const seenLinks = {};
+  const knownHard = {};
+  const cache = options[realpathCacheKey];
+  const original = p;
+
+  const maybeCachedResult = cache &amp;&amp; cache.get(p);
+  if (maybeCachedResult) {
+    return maybeCachedResult;
+  }
+
+  // current character position in p
+  var pos;
+  // the partial path so far, including a trailing slash if any
+  var current;
+  // the partial path without a trailing slash (except when pointing at a root)
+  var base;
+  // the partial path scanned in the previous round, with slash
+  var previous;
+
+  start();
+
+  function start() {
+    // Skip over roots
+    var m = splitRootRe.exec(p);
+    pos = m[0].length;
+    current = m[0];
+    base = m[0];
+    previous = '';
+
+    // On windows, check that the root exists. On unix there is no need.
+    if (isWindows &amp;&amp; !knownHard[base]) {
+      fs.lstatSync(base);
+      knownHard[base] = true;
+    }
+  }
+
+  // walk down the path, swapping out linked pathparts for their real
+  // values
+  // NB: p.length changes.
+  while (pos &lt; p.length) {
+    // find the next part
+    nextPartRe.lastIndex = pos;
+    var result = nextPartRe.exec(p);
+    previous = current;
+    current += result[0];
+    base = previous + result[1];
+    pos = nextPartRe.lastIndex;
+
+    // continue if not a symlink
+    if (knownHard[base] || (cache &amp;&amp; cache.get(base) === base)) {
+      continue;
+    }
+
+    var resolvedLink;
+    const maybeCachedResolved = cache &amp;&amp; cache.get(base);
+    if (maybeCachedResolved) {
+      resolvedLink = maybeCachedResolved;
+    } else {
+      var stat = fs.lstatSync(base);
+      if (!stat.isSymbolicLink()) {
+        knownHard[base] = true;
+        if (cache) cache.set(base, base);
+        continue;
+      }
+
+      // read the link if it wasn't read before
+      // dev/ino always return 0 on windows, so skip the check.
+      let linkTarget = null;
+      let id;
+      if (!isWindows) {
+        id = `${stat.dev.toString(32)}:${stat.ino.toString(32)}`;
+        if (seenLinks.hasOwnProperty(id)) {
+          linkTarget = seenLinks[id];
+        }
+      }
+      if (linkTarget === null) {
+        fs.statSync(base);
+        linkTarget = fs.readlinkSync(base);
+      }
+      resolvedLink = pathModule.resolve(previous, linkTarget);
+
+      if (cache) cache.set(base, resolvedLink);
+      if (!isWindows) seenLinks[id] = linkTarget;
+    }
+
+    // resolve the link, then start over
+    p = pathModule.resolve(resolvedLink, p.slice(pos));
+    start();
+  }
+
+  if (cache) cache.set(original, p);
+  return encodeRealpathResult(p, options);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.graceful-fs.rename" id="apidoc.element.graceful-fs.rename">
+        function <span class="apidocSignatureSpan">graceful-fs.</span>rename
+        <span class="apidocSignatureSpan">(oldPath, newPath, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">rename = function (oldPath, newPath, callback) {
+  callback = makeCallback(callback);
+  if (!nullCheck(oldPath, callback)) return;
+  if (!nullCheck(newPath, callback)) return;
+  var req = new FSReqWrap();
+  req.oncomplete = callback;
+  binding.rename(pathModule._makeLong(oldPath),
+                 pathModule._makeLong(newPath),
+                 req);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.graceful-fs.renameSync" id="apidoc.element.graceful-fs.renameSync">
+        function <span class="apidocSignatureSpan">graceful-fs.</span>renameSync
+        <span class="apidocSignatureSpan">(oldPath, newPath)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">renameSync = function (oldPath, newPath) {
+  nullCheck(oldPath);
+  nullCheck(newPath);
+  return binding.rename(pathModule._makeLong(oldPath),
+                        pathModule._makeLong(newPath));
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.graceful-fs.rmdir" id="apidoc.element.graceful-fs.rmdir">
+        function <span class="apidocSignatureSpan">graceful-fs.</span>rmdir
+        <span class="apidocSignatureSpan">(path, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">rmdir = function (path, callback) {
+  callback = maybeCallback(callback);
+  if (!nullCheck(path, callback)) return;
+  var req = new FSReqWrap();
+  req.oncomplete = callback;
+  binding.rmdir(pathModule._makeLong(path), req);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.graceful-fs.rmdirSync" id="apidoc.element.graceful-fs.rmdirSync">
+        function <span class="apidocSignatureSpan">graceful-fs.</span>rmdirSync
+        <span class="apidocSignatureSpan">(path)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">rmdirSync = function (path) {
+  nullCheck(path);
+  return binding.rmdir(pathModule._makeLong(path));
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.graceful-fs.stat" id="apidoc.element.graceful-fs.stat">
+        function <span class="apidocSignatureSpan">graceful-fs.</span>stat
+        <span class="apidocSignatureSpan">(target, cb)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">stat = function (target, cb) {
+  return orig.call(fs, target, function (er, stats) {
+    if (!stats) return cb.apply(this, arguments)
+    if (stats.uid &lt; 0) stats.uid += 0x100000000
+    if (stats.gid &lt; 0) stats.gid += 0x100000000
+    if (cb) cb.apply(this, arguments)
+  })
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+var start = Date.now()
+var backoff = 0;
+fs$rename(from, to, function CB (er) {
+  if (er
+      &amp;&amp; (er.code === "EACCES" || er.code === "EPERM")
+      &amp;&amp; Date.now() - start &lt; 60000) {
+    setTimeout(function() {
+      fs.<span class="apidocCodeKeywordSpan">stat</span>(to, function (stater, st) {
+        if (stater &amp;&amp; stater.code === "ENOENT")
+          fs$rename(from, to, CB);
+        else
+          cb(er)
+      })
+    }, backoff)
+    if (backoff &lt; 100)
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.graceful-fs.statSync" id="apidoc.element.graceful-fs.statSync">
+        function <span class="apidocSignatureSpan">graceful-fs.</span>statSync
+        <span class="apidocSignatureSpan">(target)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">statSync = function (target) {
+  var stats = orig.call(fs, target)
+  if (stats.uid &lt; 0) stats.uid += 0x100000000
+  if (stats.gid &lt; 0) stats.gid += 0x100000000
+  return stats;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.graceful-fs.symlink" id="apidoc.element.graceful-fs.symlink">
+        function <span class="apidocSignatureSpan">graceful-fs.</span>symlink
+        <span class="apidocSignatureSpan">(target, path, type_, callback_)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">symlink = function (target, path, type_, callback_) {
+  var type = (typeof type_ === 'string' ? type_ : null);
+  var callback = makeCallback(arguments[arguments.length - 1]);
+
+  if (!nullCheck(target, callback)) return;
+  if (!nullCheck(path, callback)) return;
+
+  var req = new FSReqWrap();
+  req.oncomplete = callback;
+
+  binding.symlink(preprocessSymlinkDestination(target, type, path),
+                  pathModule._makeLong(path),
+                  type,
+                  req);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.graceful-fs.symlinkSync" id="apidoc.element.graceful-fs.symlinkSync">
+        function <span class="apidocSignatureSpan">graceful-fs.</span>symlinkSync
+        <span class="apidocSignatureSpan">(target, path, type)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">symlinkSync = function (target, path, type) {
+  type = (typeof type === 'string' ? type : null);
+
+  nullCheck(target);
+  nullCheck(path);
+
+  return binding.symlink(preprocessSymlinkDestination(target, type, path),
+                         pathModule._makeLong(path),
+                         type);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.graceful-fs.truncate" id="apidoc.element.graceful-fs.truncate">
+        function <span class="apidocSignatureSpan">graceful-fs.</span>truncate
+        <span class="apidocSignatureSpan">(path, len, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">truncate = function (path, len, callback) {
+  if (typeof path === 'number') {
+    return fs.ftruncate(path, len, callback);
+  }
+  if (typeof len === 'function') {
+    callback = len;
+    len = 0;
+  } else if (len === undefined) {
+    len = 0;
+  }
+
+  callback = maybeCallback(callback);
+  fs.open(path, 'r+', function(er, fd) {
+    if (er) return callback(er);
+    var req = new FSReqWrap();
+    req.oncomplete = function oncomplete(er) {
+      fs.close(fd, function(er2) {
+        callback(er || er2);
+      });
+    };
+    binding.ftruncate(fd, len, req);
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.graceful-fs.truncateSync" id="apidoc.element.graceful-fs.truncateSync">
+        function <span class="apidocSignatureSpan">graceful-fs.</span>truncateSync
+        <span class="apidocSignatureSpan">(path, len)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">truncateSync = function (path, len) {
+  if (typeof path === 'number') {
+    // legacy
+    return fs.ftruncateSync(path, len);
+  }
+  if (len === undefined) {
+    len = 0;
+  }
+  // allow error to be thrown, but still close fd.
+  var fd = fs.openSync(path, 'r+');
+  var ret;
+
+  try {
+    ret = fs.ftruncateSync(fd, len);
+  } finally {
+    fs.closeSync(fd);
+  }
+  return ret;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.graceful-fs.unlink" id="apidoc.element.graceful-fs.unlink">
+        function <span class="apidocSignatureSpan">graceful-fs.</span>unlink
+        <span class="apidocSignatureSpan">(path, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">unlink = function (path, callback) {
+  callback = makeCallback(callback);
+  if (!nullCheck(path, callback)) return;
+  var req = new FSReqWrap();
+  req.oncomplete = callback;
+  binding.unlink(pathModule._makeLong(path), req);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.graceful-fs.unlinkSync" id="apidoc.element.graceful-fs.unlinkSync">
+        function <span class="apidocSignatureSpan">graceful-fs.</span>unlinkSync
+        <span class="apidocSignatureSpan">(path)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">unlinkSync = function (path) {
+  nullCheck(path);
+  return binding.unlink(pathModule._makeLong(path));
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.graceful-fs.unwatchFile" id="apidoc.element.graceful-fs.unwatchFile">
+        function <span class="apidocSignatureSpan">graceful-fs.</span>unwatchFile
+        <span class="apidocSignatureSpan">(filename, listener)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">unwatchFile = function (filename, listener) {
+  nullCheck(filename);
+  filename = pathModule.resolve(filename);
+  var stat = statWatchers.get(filename);
+
+  if (stat === undefined) return;
+
+  if (typeof listener === 'function') {
+    stat.removeListener('change', listener);
+  } else {
+    stat.removeAllListeners('change');
+  }
+
+  if (stat.listenerCount('change') === 0) {
+    stat.stop();
+    statWatchers.delete(filename);
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.graceful-fs.utimes" id="apidoc.element.graceful-fs.utimes">
+        function <span class="apidocSignatureSpan">graceful-fs.</span>utimes
+        <span class="apidocSignatureSpan">(path, atime, mtime, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">utimes = function (path, atime, mtime, callback) {
+  callback = makeCallback(callback);
+  if (!nullCheck(path, callback)) return;
+  var req = new FSReqWrap();
+  req.oncomplete = callback;
+  binding.utimes(pathModule._makeLong(path),
+                 toUnixTimestamp(atime),
+                 toUnixTimestamp(mtime),
+                 req);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.graceful-fs.utimesSync" id="apidoc.element.graceful-fs.utimesSync">
+        function <span class="apidocSignatureSpan">graceful-fs.</span>utimesSync
+        <span class="apidocSignatureSpan">(path, atime, mtime)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">utimesSync = function (path, atime, mtime) {
+  nullCheck(path);
+  atime = toUnixTimestamp(atime);
+  mtime = toUnixTimestamp(mtime);
+  binding.utimes(pathModule._makeLong(path), atime, mtime);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.graceful-fs.watch" id="apidoc.element.graceful-fs.watch">
+        function <span class="apidocSignatureSpan">graceful-fs.</span>watch
+        <span class="apidocSignatureSpan">(filename, options, listener)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">watch = function (filename, options, listener) {
+  nullCheck(filename);
+
+  options = options || {};
+  if (typeof options === 'function') {
+    listener = options;
+    options = {};
+  } else if (typeof options === 'string') {
+    options = {encoding: options};
+  }
+  if (typeof options !== 'object')
+    throw new TypeError('"options" must be a string or an object');
+
+  if (options.persistent === undefined) options.persistent = true;
+  if (options.recursive === undefined) options.recursive = false;
+
+  const watcher = new FSWatcher();
+  watcher.start(filename,
+                options.persistent,
+                options.recursive,
+                options.encoding);
+
+  if (listener) {
+    watcher.addListener('change', listener);
+  }
+
+  return watcher;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.graceful-fs.watchFile" id="apidoc.element.graceful-fs.watchFile">
+        function <span class="apidocSignatureSpan">graceful-fs.</span>watchFile
+        <span class="apidocSignatureSpan">(filename, options, listener)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">watchFile = function (filename, options, listener) {
+  nullCheck(filename);
+  filename = pathModule.resolve(filename);
+  var stat;
+
+  var defaults = {
+    // Poll interval in milliseconds. 5007 is what libev used to use. It's
+    // a little on the slow side but let's stick with it for now to keep
+    // behavioral changes to a minimum.
+    interval: 5007,
+    persistent: true
+  };
+
+  if (options !== null &amp;&amp; typeof options === 'object') {
+    options = util._extend(defaults, options);
+  } else {
+    listener = options;
+    options = defaults;
+  }
+
+  if (typeof listener !== 'function') {
+    throw new Error('"watchFile()" requires a listener function');
+  }
+
+  stat = statWatchers.get(filename);
+
+  if (stat === undefined) {
+    stat = new StatWatcher();
+    stat.start(filename, options.persistent, options.interval);
+    statWatchers.set(filename, stat);
+  }
+
+  stat.addListener('change', listener);
+  return stat;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.graceful-fs.write" id="apidoc.element.graceful-fs.write">
+        function <span class="apidocSignatureSpan">graceful-fs.</span>write
+        <span class="apidocSignatureSpan">(fd, buffer, offset, length, position, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">write = function (fd, buffer, offset, length, position, callback) {
+  function wrapper(err, written) {
+    // Retain a reference to buffer so that it can't be GC'ed too soon.
+    callback(err, written || 0, buffer);
+  }
+
+  var req = new FSReqWrap();
+  req.oncomplete = wrapper;
+
+  if (buffer instanceof Buffer) {
+    // if no position is passed then assume null
+    if (typeof position === 'function') {
+      callback = position;
+      position = null;
+    }
+    callback = maybeCallback(callback);
+    return binding.writeBuffer(fd, buffer, offset, length, position, req);
+  }
+
+  if (typeof buffer !== 'string')
+    buffer += '';
+  if (typeof position !== 'function') {
+    if (typeof offset === 'function') {
+      position = offset;
+      offset = null;
+    } else {
+      position = length;
+    }
+    length = 'utf8';
+  }
+  callback = maybeCallback(position);
+  return binding.writeString(fd, buffer, offset, length, req);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.graceful-fs.writeFile" id="apidoc.element.graceful-fs.writeFile">
+        function <span class="apidocSignatureSpan">graceful-fs.</span>writeFile
+        <span class="apidocSignatureSpan">(path, data, options, cb)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function writeFile(path, data, options, cb) {
+  if (typeof options === 'function')
+    cb = options, options = null
+
+  return go$writeFile(path, data, options, cb)
+
+  function go$writeFile (path, data, options, cb) {
+    return fs$writeFile(path, data, options, function (err) {
+      if (err &amp;&amp; (err.code === 'EMFILE' || err.code === 'ENFILE'))
+        enqueue([go$writeFile, [path, data, options, cb]])
+      else {
+        if (typeof cb === 'function')
+          cb.apply(this, arguments)
+        retry()
+      }
+    })
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.graceful-fs.writeFileSync" id="apidoc.element.graceful-fs.writeFileSync">
+        function <span class="apidocSignatureSpan">graceful-fs.</span>writeFileSync
+        <span class="apidocSignatureSpan">(path, data, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">writeFileSync = function (path, data, options) {
+  if (!options) {
+    options = { encoding: 'utf8', mode: 0o666, flag: 'w' };
+  } else if (typeof options === 'string') {
+    options = { encoding: options, mode: 0o666, flag: 'w' };
+  } else if (typeof options !== 'object') {
+    throwOptionsError(options);
+  }
+
+  assertEncoding(options.encoding);
+
+  var flag = options.flag || 'w';
+  var isUserFd = isFd(path); // file descriptor ownership
+  var fd = isUserFd ? path : fs.openSync(path, flag, options.mode);
+
+  if (!(data instanceof Buffer)) {
+    data = Buffer.from('' + data, options.encoding || 'utf8');
+  }
+  var offset = 0;
+  var length = data.length;
+  var position = /a/.test(flag) ? null : 0;
+  try {
+    while (length &gt; 0) {
+      var written = fs.writeSync(fd, data, offset, length, position);
+      offset += written;
+      length -= written;
+      if (position !== null) {
+        position += written;
+      }
+    }
+  } finally {
+    if (!isUserFd) fs.closeSync(fd);
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.graceful-fs.writeSync" id="apidoc.element.graceful-fs.writeSync">
+        function <span class="apidocSignatureSpan">graceful-fs.</span>writeSync
+        <span class="apidocSignatureSpan">(fd, buffer, offset, length, position)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">writeSync = function (fd, buffer, offset, length, position) {
+  if (buffer instanceof Buffer) {
+    if (position === undefined)
+      position = null;
+    return binding.writeBuffer(fd, buffer, offset, length, position);
+  }
+  if (typeof buffer !== 'string')
+    buffer += '';
+  if (offset === undefined)
+    offset = null;
+  return binding.writeString(fd, buffer, offset, length, position);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.graceful-fs.ReadStream" id="apidoc.module.graceful-fs.ReadStream">module graceful-fs.ReadStream</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.graceful-fs.ReadStream.ReadStream" id="apidoc.element.graceful-fs.ReadStream.ReadStream">
+        function <span class="apidocSignatureSpan">graceful-fs.</span>ReadStream
+        <span class="apidocSignatureSpan">(path, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function ReadStream(path, options) {
+  if (this instanceof ReadStream)
+    return fs$ReadStream.apply(this, arguments), this
+  else
+    return ReadStream.apply(Object.create(ReadStream.prototype), arguments)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.graceful-fs.ReadStream.prototype" id="apidoc.module.graceful-fs.ReadStream.prototype">module graceful-fs.ReadStream.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.graceful-fs.ReadStream.prototype.open" id="apidoc.element.graceful-fs.ReadStream.prototype.open">
+        function <span class="apidocSignatureSpan">graceful-fs.ReadStream.prototype.</span>open
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function ReadStream$open() {
+  var that = this
+  open(that.path, that.flags, that.mode, function (err, fd) {
+    if (err) {
+      if (that.autoClose)
+        that.destroy()
+
+      that.emit('error', err)
+    } else {
+      that.fd = fd
+      that.emit('open', fd)
+      that.read()
+    }
+  })
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    if (this.fd !== null) {
+process.nextTick(function() {
+  self._read();
+});
+return;
+    }
+
+    fs.<span class="apidocCodeKeywordSpan">open</span>(this.path, this.flags, this.mode, function (err, fd) {
+if (err) {
+  self.emit('error', err);
+  self.readable = false;
+  return;
+}
+
+self.fd = fd;
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.graceful-fs.Stats" id="apidoc.module.graceful-fs.Stats">module graceful-fs.Stats</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.graceful-fs.Stats.Stats" id="apidoc.element.graceful-fs.Stats.Stats">
+        function <span class="apidocSignatureSpan">graceful-fs.</span>Stats
+        <span class="apidocSignatureSpan">( dev, mode, nlink, uid, gid, rdev, blksize, ino, size, blocks, atim_msec, mtim_msec, ctim_msec, birthtim_msec)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Stats( dev, mode, nlink, uid, gid, rdev, blksize, ino, size, blocks, atim_msec, mtim_msec, ctim_msec, birthtim_msec) {
+  this.dev = dev;
+  this.mode = mode;
+  this.nlink = nlink;
+  this.uid = uid;
+  this.gid = gid;
+  this.rdev = rdev;
+  this.blksize = blksize;
+  this.ino = ino;
+  this.size = size;
+  this.blocks = blocks;
+  this.atime = new Date(atim_msec);
+  this.mtime = new Date(mtim_msec);
+  this.ctime = new Date(ctim_msec);
+  this.birthtime = new Date(birthtim_msec);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.graceful-fs.Stats.prototype" id="apidoc.module.graceful-fs.Stats.prototype">module graceful-fs.Stats.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.graceful-fs.Stats.prototype._checkModeProperty" id="apidoc.element.graceful-fs.Stats.prototype._checkModeProperty">
+        function <span class="apidocSignatureSpan">graceful-fs.Stats.prototype.</span>_checkModeProperty
+        <span class="apidocSignatureSpan">(property)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_checkModeProperty = function (property) {
+  return ((this.mode &amp; constants.S_IFMT) === property);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.graceful-fs.Stats.prototype.isBlockDevice" id="apidoc.element.graceful-fs.Stats.prototype.isBlockDevice">
+        function <span class="apidocSignatureSpan">graceful-fs.Stats.prototype.</span>isBlockDevice
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">isBlockDevice = function () {
+  return this._checkModeProperty(constants.S_IFBLK);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.graceful-fs.Stats.prototype.isCharacterDevice" id="apidoc.element.graceful-fs.Stats.prototype.isCharacterDevice">
+        function <span class="apidocSignatureSpan">graceful-fs.Stats.prototype.</span>isCharacterDevice
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">isCharacterDevice = function () {
+  return this._checkModeProperty(constants.S_IFCHR);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.graceful-fs.Stats.prototype.isDirectory" id="apidoc.element.graceful-fs.Stats.prototype.isDirectory">
+        function <span class="apidocSignatureSpan">graceful-fs.Stats.prototype.</span>isDirectory
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">isDirectory = function () {
+  return this._checkModeProperty(constants.S_IFDIR);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.graceful-fs.Stats.prototype.isFIFO" id="apidoc.element.graceful-fs.Stats.prototype.isFIFO">
+        function <span class="apidocSignatureSpan">graceful-fs.Stats.prototype.</span>isFIFO
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">isFIFO = function () {
+  return this._checkModeProperty(constants.S_IFIFO);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.graceful-fs.Stats.prototype.isFile" id="apidoc.element.graceful-fs.Stats.prototype.isFile">
+        function <span class="apidocSignatureSpan">graceful-fs.Stats.prototype.</span>isFile
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">isFile = function () {
+  return this._checkModeProperty(constants.S_IFREG);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.graceful-fs.Stats.prototype.isSocket" id="apidoc.element.graceful-fs.Stats.prototype.isSocket">
+        function <span class="apidocSignatureSpan">graceful-fs.Stats.prototype.</span>isSocket
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">isSocket = function () {
+  return this._checkModeProperty(constants.S_IFSOCK);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.graceful-fs.Stats.prototype.isSymbolicLink" id="apidoc.element.graceful-fs.Stats.prototype.isSymbolicLink">
+        function <span class="apidocSignatureSpan">graceful-fs.Stats.prototype.</span>isSymbolicLink
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">isSymbolicLink = function () {
+  return this._checkModeProperty(constants.S_IFLNK);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.graceful-fs.WriteStream" id="apidoc.module.graceful-fs.WriteStream">module graceful-fs.WriteStream</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.graceful-fs.WriteStream.WriteStream" id="apidoc.element.graceful-fs.WriteStream.WriteStream">
+        function <span class="apidocSignatureSpan">graceful-fs.</span>WriteStream
+        <span class="apidocSignatureSpan">(path, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function WriteStream(path, options) {
+  if (this instanceof WriteStream)
+    return fs$WriteStream.apply(this, arguments), this
+  else
+    return WriteStream.apply(Object.create(WriteStream.prototype), arguments)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.graceful-fs.WriteStream.prototype" id="apidoc.module.graceful-fs.WriteStream.prototype">module graceful-fs.WriteStream.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.graceful-fs.WriteStream.prototype.open" id="apidoc.element.graceful-fs.WriteStream.prototype.open">
+        function <span class="apidocSignatureSpan">graceful-fs.WriteStream.prototype.</span>open
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function WriteStream$open() {
+  var that = this
+  open(that.path, that.flags, that.mode, function (err, fd) {
+    if (err) {
+      that.destroy()
+      that.emit('error', err)
+    } else {
+      that.fd = fd
+      that.emit('open', fd)
+    }
+  })
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    if (this.fd !== null) {
+process.nextTick(function() {
+  self._read();
+});
+return;
+    }
+
+    fs.<span class="apidocCodeKeywordSpan">open</span>(this.path, this.flags, this.mode, function (err, fd) {
+if (err) {
+  self.emit('error', err);
+  self.readable = false;
+  return;
+}
+
+self.fd = fd;
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
+</body></html>
