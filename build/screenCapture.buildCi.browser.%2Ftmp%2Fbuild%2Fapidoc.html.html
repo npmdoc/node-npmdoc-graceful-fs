@@ -1,4 +1,4 @@
-<div class="apidocDiv">
+<html><head></head><body><div class="apidocDiv">
 <style>
 /*csslint
 */
@@ -47,17 +47,10 @@
 }
 </style>
 <h1>api documentation for
-    <a
-
-        href="https://github.com/isaacs/node-graceful-fs#readme"
-
-    >graceful-fs (v4.1.11)</a>
+    <a href="https://github.com/isaacs/node-graceful-fs#readme">graceful-fs (v4.1.11)</a>
 </h1>
 <h4>A drop-in replacement for fs, making various improvements.</h4>
-<div class="apidocSectionDiv"><a
-    href="#apidoc.tableOfContents"
-    id="apidoc.tableOfContents"
-><h1>table of contents</h1></a><ol>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
 
     <li class="apidocModuleLi"><a href="#apidoc.module.graceful-fs">module graceful-fs</a><ol>
 
@@ -1882,11 +1875,11 @@
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function toUnixTimestamp(time) {
-  if (typeof time === &#x27;string&#x27; &#x26;&#x26; +time == time) {
+  if (typeof time === 'string' &amp;&amp; +time == time) {
     return +time;
   }
-  if (typeof time === &#x27;number&#x27;) {
-    if (!Number.isFinite(time) || time &#x3c; 0) {
+  if (typeof time === 'number') {
+    if (!Number.isFinite(time) || time &lt; 0) {
       return Date.now() / 1000;
     }
     return time;
@@ -1895,7 +1888,7 @@
     // convert to 123.456 UNIX timestamp
     return time.getTime() / 1000;
   }
-  throw new Error(&#x27;Cannot parse time: &#x27; + time);
+  throw new Error('Cannot parse time: ' + time);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -1910,11 +1903,11 @@
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">access = function (path, mode, callback) {
-  if (typeof mode === &#x27;function&#x27;) {
+  if (typeof mode === 'function') {
     callback = mode;
     mode = fs.F_OK;
-  } else if (typeof callback !== &#x27;function&#x27;) {
-    throw new TypeError(&#x27;&#x22;callback&#x22; argument must be a function&#x27;);
+  } else if (typeof callback !== 'function') {
+    throw new TypeError('"callback" argument must be a function');
   }
 
   if (!nullCheck(path, callback))
@@ -1960,17 +1953,17 @@
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function appendFile(path, data, options, cb) {
-  if (typeof options === &#x27;function&#x27;)
+  if (typeof options === 'function')
     cb = options, options = null
 
   return go$appendFile(path, data, options, cb)
 
   function go$appendFile (path, data, options, cb) {
     return fs$appendFile(path, data, options, function (err) {
-      if (err &#x26;&#x26; (err.code === &#x27;EMFILE&#x27; || err.code === &#x27;ENFILE&#x27;))
+      if (err &amp;&amp; (err.code === 'EMFILE' || err.code === 'ENFILE'))
         enqueue([go$appendFile, [path, data, options, cb]])
       else {
-        if (typeof cb === &#x27;function&#x27;)
+        if (typeof cb === 'function')
           cb.apply(this, arguments)
         retry()
       }
@@ -1991,19 +1984,19 @@
     <ul>
     <li>description and source-code<pre class="apidocCodePre">appendFileSync = function (path, data, options) {
   if (!options) {
-    options = { encoding: &#x27;utf8&#x27;, mode: 0o666, flag: &#x27;a&#x27; };
-  } else if (typeof options === &#x27;string&#x27;) {
-    options = { encoding: options, mode: 0o666, flag: &#x27;a&#x27; };
-  } else if (typeof options !== &#x27;object&#x27;) {
+    options = { encoding: 'utf8', mode: 0o666, flag: 'a' };
+  } else if (typeof options === 'string') {
+    options = { encoding: options, mode: 0o666, flag: 'a' };
+  } else if (typeof options !== 'object') {
     throwOptionsError(options);
   }
 
   if (!options.flag)
-    options = util._extend({ flag: &#x27;a&#x27; }, options);
+    options = util._extend({ flag: 'a' }, options);
 
   // force append behavior when using a supplied file descriptor
   if (isFd(path))
-    options.flag = &#x27;a&#x27;;
+    options.flag = 'a';
 
   fs.writeFileSync(path, data, options);
 }</pre></li>
@@ -2098,7 +2091,7 @@
     if (!err)
       retry()
 
-    if (typeof cb === &#x27;function&#x27;)
+    if (typeof cb === 'function')
       cb.apply(this, arguments)
   })
 }</pre></li>
@@ -2132,13 +2125,13 @@ fs.lchmodSync = function (path, mode) {
     <ul>
     <li>description and source-code<pre class="apidocCodePre">closeSync = function (fd) {
   // Note that graceful-fs also retries when fs.closeSync() fails.
-  // Looks like a bug to me, although it&#x27;s probably a harmless one.
+  // Looks like a bug to me, although it's probably a harmless one.
   var rval = fs$closeSync.apply(fs, arguments)
   retry()
   return rval
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-    if (typeof cb === &#x27;function&#x27;)
+    if (typeof cb === 'function')
       cb.apply(this, arguments)
   })
 }})(fs.close)
@@ -2146,7 +2139,7 @@ fs.lchmodSync = function (path, mode) {
 module.exports.closeSync =
 fs.closeSync = (function (fs$closeSync) { return function (fd) {
   // Note that graceful-fs also retries when fs.<span class="apidocCodeKeywordSpan">closeSync</span>() fails.
-  // Looks like a bug to me, although it&#x27;s probably a harmless one.
+  // Looks like a bug to me, although it's probably a harmless one.
   var rval = fs$closeSync.apply(fs, arguments)
   retry()
   return rval
@@ -2377,8 +2370,8 @@ try {
     <li>description and source-code<pre class="apidocCodePre">fstat = function (target, cb) {
   return orig.call(fs, target, function (er, stats) {
     if (!stats) return cb.apply(this, arguments)
-    if (stats.uid &#x3c; 0) stats.uid += 0x100000000
-    if (stats.gid &#x3c; 0) stats.gid += 0x100000000
+    if (stats.uid &lt; 0) stats.uid += 0x100000000
+    if (stats.gid &lt; 0) stats.gid += 0x100000000
     if (cb) cb.apply(this, arguments)
   })
 }</pre></li>
@@ -2396,8 +2389,8 @@ try {
     <ul>
     <li>description and source-code<pre class="apidocCodePre">fstatSync = function (target) {
   var stats = orig.call(fs, target)
-  if (stats.uid &#x3c; 0) stats.uid += 0x100000000
-  if (stats.gid &#x3c; 0) stats.gid += 0x100000000
+  if (stats.uid &lt; 0) stats.uid += 0x100000000
+  if (stats.gid &lt; 0) stats.gid += 0x100000000
   return stats;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
@@ -2445,7 +2438,7 @@ try {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">ftruncate = function (fd, len, callback) {
-  if (typeof len === &#x27;function&#x27;) {
+  if (typeof len === 'function') {
     callback = len;
     len = 0;
   } else if (len === undefined) {
@@ -2493,7 +2486,7 @@ try {
   binding.futimes(fd, atime, mtime, req);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-  if (constants.hasOwnProperty(&#x22;O_SYMLINK&#x22;)) {
+  if (constants.hasOwnProperty("O_SYMLINK")) {
 fs.lutimes = function (path, at, mt, cb) {
   fs.open(path, constants.O_SYMLINK, function (er, fd) {
     if (er) {
@@ -2563,17 +2556,17 @@ fs.lutimesSync = function (path, at, mt) {
   var fs$readFile = fs.readFile
   fs.readFile = readFile
   function readFile (path, options, cb) {
-    if (typeof options === &#x27;function&#x27;)
+    if (typeof options === 'function')
       cb = options, options = null
 
     return go$readFile(path, options, cb)
 
     function go$readFile (path, options, cb) {
       return fs$readFile(path, options, function (err) {
-        if (err &#x26;&#x26; (err.code === &#x27;EMFILE&#x27; || err.code === &#x27;ENFILE&#x27;))
+        if (err &amp;&amp; (err.code === 'EMFILE' || err.code === 'ENFILE'))
           enqueue([go$readFile, [path, options, cb]])
         else {
-          if (typeof cb === &#x27;function&#x27;)
+          if (typeof cb === 'function')
             cb.apply(this, arguments)
           retry()
         }
@@ -2584,17 +2577,17 @@ fs.lutimesSync = function (path, at, mt) {
   var fs$writeFile = fs.writeFile
   fs.writeFile = writeFile
   function writeFile (path, data, options, cb) {
-    if (typeof options === &#x27;function&#x27;)
+    if (typeof options === 'function')
       cb = options, options = null
 
     return go$writeFile(path, data, options, cb)
 
     function go$writeFile (path, data, options, cb) {
       return fs$writeFile(path, data, options, function (err) {
-        if (err &#x26;&#x26; (err.code === &#x27;EMFILE&#x27; || err.code === &#x27;ENFILE&#x27;))
+        if (err &amp;&amp; (err.code === 'EMFILE' || err.code === 'ENFILE'))
           enqueue([go$writeFile, [path, data, options, cb]])
         else {
-          if (typeof cb === &#x27;function&#x27;)
+          if (typeof cb === 'function')
             cb.apply(this, arguments)
           retry()
         }
@@ -2606,17 +2599,17 @@ fs.lutimesSync = function (path, at, mt) {
   if (fs$appendFile)
     fs.appendFile = appendFile
   function appendFile (path, data, options, cb) {
-    if (typeof options === &#x27;function&#x27;)
+    if (typeof options === 'function')
       cb = options, options = null
 
     return go$appendFile(path, data, options, cb)
 
     function go$appendFile (path, data, options, cb) {
       return fs$appendFile(path, data, options, function (err) {
-        if (err &#x26;&#x26; (err.code === &#x27;EMFILE&#x27; || err.code === &#x27;ENFILE&#x27;))
+        if (err &amp;&amp; (err.code === 'EMFILE' || err.code === 'ENFILE'))
           enqueue([go$appendFile, [path, data, options, cb]])
         else {
-          if (typeof cb === &#x27;function&#x27;)
+          if (typeof cb === 'function')
             cb.apply(this, arguments)
           retry()
         }
@@ -2628,7 +2621,7 @@ fs.lutimesSync = function (path, at, mt) {
   fs.readdir = readdir
   function readdir (path, options, cb) {
     var args = [path]
-    if (typeof options !== &#x27;function&#x27;) {
+    if (typeof options !== 'function') {
       args.push(options)
     } else {
       cb = options
@@ -2638,13 +2631,13 @@ fs.lutimesSync = function (path, at, mt) {
     return go$readdir(args)
 
     function go$readdir$cb (err, files) {
-      if (files &#x26;&#x26; files.sort)
+      if (files &amp;&amp; files.sort)
         files.sort()
 
-      if (err &#x26;&#x26; (err.code === &#x27;EMFILE&#x27; || err.code === &#x27;ENFILE&#x27;))
+      if (err &amp;&amp; (err.code === 'EMFILE' || err.code === 'ENFILE'))
         enqueue([go$readdir, [args]])
       else {
-        if (typeof cb === &#x27;function&#x27;)
+        if (typeof cb === 'function')
           cb.apply(this, arguments)
         retry()
       }
@@ -2655,7 +2648,7 @@ fs.lutimesSync = function (path, at, mt) {
     return fs$readdir.apply(fs, args)
   }
 
-  if (process.version.substr(0, 4) === &#x27;v0.8&#x27;) {
+  if (process.version.substr(0, 4) === 'v0.8') {
     var legStreams = legacy(fs)
     ReadStream = legStreams.ReadStream
     WriteStream = legStreams.WriteStream
@@ -2686,10 +2679,10 @@ fs.lutimesSync = function (path, at, mt) {
         if (that.autoClose)
           that.destroy()
 
-        that.emit(&#x27;error&#x27;, err)
+        that.emit('error', err)
       } else {
         that.fd = fd
-        that.emit(&#x27;open&#x27;, fd)
+        that.emit('open', fd)
         that.read()
       }
     })
@@ -2706,8 +2699,8 @@ module) you can do this:
 
 ```javascript
 // Make sure to read the caveat below.
-var realFs = require(&#x27;fs&#x27;)
-var gracefulFs = require(&#x27;graceful-fs&#x27;)
+var realFs = require('fs')
+var gracefulFs = require('graceful-fs')
 gracefulFs.<span class="apidocCodeKeywordSpan">gracefulify</span>(realFs)
 ```
 
@@ -2828,8 +2821,8 @@ delays in other parts of the program.
     <li>description and source-code<pre class="apidocCodePre">lstat = function (target, cb) {
   return orig.call(fs, target, function (er, stats) {
     if (!stats) return cb.apply(this, arguments)
-    if (stats.uid &#x3c; 0) stats.uid += 0x100000000
-    if (stats.gid &#x3c; 0) stats.gid += 0x100000000
+    if (stats.uid &lt; 0) stats.uid += 0x100000000
+    if (stats.gid &lt; 0) stats.gid += 0x100000000
     if (cb) cb.apply(this, arguments)
   })
 }</pre></li>
@@ -2847,8 +2840,8 @@ delays in other parts of the program.
     <ul>
     <li>description and source-code<pre class="apidocCodePre">lstatSync = function (target) {
   var stats = orig.call(fs, target)
-  if (stats.uid &#x3c; 0) stats.uid += 0x100000000
-  if (stats.gid &#x3c; 0) stats.gid += 0x100000000
+  if (stats.uid &lt; 0) stats.uid += 0x100000000
+  if (stats.gid &lt; 0) stats.gid += 0x100000000
   return stats;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
@@ -2890,7 +2883,7 @@ delays in other parts of the program.
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">mkdir = function (path, mode, callback) {
-  if (typeof mode === &#x27;function&#x27;) callback = mode;
+  if (typeof mode === 'function') callback = mode;
   callback = makeCallback(callback);
   if (!nullCheck(path, callback)) return;
   var req = new FSReqWrap();
@@ -2929,18 +2922,18 @@ delays in other parts of the program.
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">mkdtemp = function (prefix, options, callback) {
-  if (!prefix || typeof prefix !== &#x27;string&#x27;)
-    throw new TypeError(&#x27;filename prefix is required&#x27;);
+  if (!prefix || typeof prefix !== 'string')
+    throw new TypeError('filename prefix is required');
 
   options = options || {};
-  if (typeof options === &#x27;function&#x27;) {
+  if (typeof options === 'function') {
     callback = options;
     options = {};
-  } else if (typeof options === &#x27;string&#x27;) {
+  } else if (typeof options === 'string') {
     options = {encoding: options};
   }
-  if (typeof options !== &#x27;object&#x27;)
-    throw new TypeError(&#x27;&#x22;options&#x22; must be a string or an object&#x27;);
+  if (typeof options !== 'object')
+    throw new TypeError('"options" must be a string or an object');
 
   callback = makeCallback(callback);
   if (!nullCheck(prefix, callback)) {
@@ -2950,7 +2943,7 @@ delays in other parts of the program.
   var req = new FSReqWrap();
   req.oncomplete = callback;
 
-  binding.mkdtemp(prefix + &#x27;XXXXXX&#x27;, options.encoding, req);
+  binding.mkdtemp(prefix + 'XXXXXX', options.encoding, req);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -2965,17 +2958,17 @@ delays in other parts of the program.
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">mkdtempSync = function (prefix, options) {
-  if (!prefix || typeof prefix !== &#x27;string&#x27;)
-    throw new TypeError(&#x27;filename prefix is required&#x27;);
+  if (!prefix || typeof prefix !== 'string')
+    throw new TypeError('filename prefix is required');
 
   options = options || {};
-  if (typeof options === &#x27;string&#x27;)
+  if (typeof options === 'string')
     options = {encoding: options};
-  if (typeof options !== &#x27;object&#x27;)
-    throw new TypeError(&#x27;&#x22;options&#x22; must be a string or an object&#x27;);
+  if (typeof options !== 'object')
+    throw new TypeError('"options" must be a string or an object');
   nullCheck(prefix);
 
-  return binding.mkdtemp(prefix + &#x27;XXXXXX&#x27;, options.encoding);
+  return binding.mkdtemp(prefix + 'XXXXXX', options.encoding);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -2990,17 +2983,17 @@ delays in other parts of the program.
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function open(path, flags, mode, cb) {
-  if (typeof mode === &#x27;function&#x27;)
+  if (typeof mode === 'function')
     cb = mode, mode = null
 
   return go$open(path, flags, mode, cb)
 
   function go$open (path, flags, mode, cb) {
     return fs$open(path, flags, mode, function (err, fd) {
-      if (err &#x26;&#x26; (err.code === &#x27;EMFILE&#x27; || err.code === &#x27;ENFILE&#x27;))
+      if (err &amp;&amp; (err.code === 'EMFILE' || err.code === 'ENFILE'))
         enqueue([go$open, [path, flags, mode, cb]])
       else {
-        if (typeof cb === &#x27;function&#x27;)
+        if (typeof cb === 'function')
           cb.apply(this, arguments)
         retry()
       }
@@ -3017,7 +3010,7 @@ return;
 
     fs.<span class="apidocCodeKeywordSpan">open</span>(this.path, this.flags, this.mode, function (err, fd) {
 if (err) {
-  self.emit(&#x27;error&#x27;, err);
+  self.emit('error', err);
   self.readable = false;
   return;
 }
@@ -3070,10 +3063,10 @@ try {
     <ul>
     <li>description and source-code<pre class="apidocCodePre">read = function (fd, buffer, offset, length, position, callback_) {
   var callback
-  if (callback_ &#x26;&#x26; typeof callback_ === &#x27;function&#x27;) {
+  if (callback_ &amp;&amp; typeof callback_ === 'function') {
     var eagCounter = 0
     callback = function (er, _, __) {
-      if (er &#x26;&#x26; er.code === &#x27;EAGAIN&#x27; &#x26;&#x26; eagCounter &#x3c; 10) {
+      if (er &amp;&amp; er.code === 'EAGAIN' &amp;&amp; eagCounter &lt; 10) {
         eagCounter ++
         return fs$read.call(fs, fd, buffer, offset, length, position, callback)
       }
@@ -3086,10 +3079,10 @@ try {
       if (that.autoClose)
         that.destroy()
 
-      that.emit(&#x27;error&#x27;, err)
+      that.emit('error', err)
     } else {
       that.fd = fd
-      that.emit(&#x27;open&#x27;, fd)
+      that.emit('open', fd)
       that.<span class="apidocCodeKeywordSpan">read</span>()
     }
   })
@@ -3111,17 +3104,17 @@ function WriteStream (path, options) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function readFile(path, options, cb) {
-  if (typeof options === &#x27;function&#x27;)
+  if (typeof options === 'function')
     cb = options, options = null
 
   return go$readFile(path, options, cb)
 
   function go$readFile (path, options, cb) {
     return fs$readFile(path, options, function (err) {
-      if (err &#x26;&#x26; (err.code === &#x27;EMFILE&#x27; || err.code === &#x27;ENFILE&#x27;))
+      if (err &amp;&amp; (err.code === 'EMFILE' || err.code === 'ENFILE'))
         enqueue([go$readFile, [path, options, cb]])
       else {
-        if (typeof cb === &#x27;function&#x27;)
+        if (typeof cb === 'function')
           cb.apply(this, arguments)
         retry()
       }
@@ -3142,17 +3135,17 @@ function WriteStream (path, options) {
     <ul>
     <li>description and source-code<pre class="apidocCodePre">readFileSync = function (path, options) {
   if (!options) {
-    options = { encoding: null, flag: &#x27;r&#x27; };
-  } else if (typeof options === &#x27;string&#x27;) {
-    options = { encoding: options, flag: &#x27;r&#x27; };
-  } else if (typeof options !== &#x27;object&#x27;) {
+    options = { encoding: null, flag: 'r' };
+  } else if (typeof options === 'string') {
+    options = { encoding: options, flag: 'r' };
+  } else if (typeof options !== 'object') {
     throwOptionsError(options);
   }
 
   var encoding = options.encoding;
   assertEncoding(encoding);
 
-  var flag = options.flag || &#x27;r&#x27;;
+  var flag = options.flag || 'r';
   var isUserFd = isFd(path); // file descriptor ownership
   var fd = isUserFd ? path : fs.openSync(path, flag, 0o666);
 
@@ -3174,7 +3167,7 @@ function WriteStream (path, options) {
     do {
       bytesRead = tryReadSync(fd, isUserFd, buffer, pos, size - pos);
       pos += bytesRead;
-    } while (bytesRead !== 0 &#x26;&#x26; pos &#x3c; size);
+    } while (bytesRead !== 0 &amp;&amp; pos &lt; size);
   } else {
     do {
       // the kernel lies about many files.
@@ -3194,7 +3187,7 @@ function WriteStream (path, options) {
   if (size === 0) {
     // data was collected into the buffers list.
     buffer = Buffer.concat(buffers, pos);
-  } else if (pos &#x3c; size) {
+  } else if (pos &lt; size) {
     buffer = buffer.slice(0, pos);
   }
 
@@ -3206,10 +3199,10 @@ function WriteStream (path, options) {
 
 ```javascript
 // use just like fs
-var fs = require(&#x27;graceful-fs&#x27;)
+var fs = require('graceful-fs')
 
 // now go and do stuff with it...
-fs.<span class="apidocCodeKeywordSpan">readFileSync</span>(&#x27;some-file-or-whatever&#x27;)
+fs.<span class="apidocCodeKeywordSpan">readFileSync</span>('some-file-or-whatever')
 ```
 
 ## Global Patching
@@ -3234,7 +3227,7 @@ module) you can do this:
     try {
       return fs$readSync.call(fs, fd, buffer, offset, length, position)
     } catch (er) {
-      if (er.code === &#x27;EAGAIN&#x27; &#x26;&#x26; eagCounter &#x3c; 10) {
+      if (er.code === 'EAGAIN' &amp;&amp; eagCounter &lt; 10) {
         eagCounter ++
         continue
       }
@@ -3256,7 +3249,7 @@ module) you can do this:
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function readdir(path, options, cb) {
   var args = [path]
-  if (typeof options !== &#x27;function&#x27;) {
+  if (typeof options !== 'function') {
     args.push(options)
   } else {
     cb = options
@@ -3266,13 +3259,13 @@ module) you can do this:
   return go$readdir(args)
 
   function go$readdir$cb (err, files) {
-    if (files &#x26;&#x26; files.sort)
+    if (files &amp;&amp; files.sort)
       files.sort()
 
-    if (err &#x26;&#x26; (err.code === &#x27;EMFILE&#x27; || err.code === &#x27;ENFILE&#x27;))
+    if (err &amp;&amp; (err.code === 'EMFILE' || err.code === 'ENFILE'))
       enqueue([go$readdir, [args]])
     else {
-      if (typeof cb === &#x27;function&#x27;)
+      if (typeof cb === 'function')
         cb.apply(this, arguments)
       retry()
     }
@@ -3292,10 +3285,10 @@ module) you can do this:
     <ul>
     <li>description and source-code<pre class="apidocCodePre">readdirSync = function (path, options) {
   options = options || {};
-  if (typeof options === &#x27;string&#x27;)
+  if (typeof options === 'string')
     options = {encoding: options};
-  if (typeof options !== &#x27;object&#x27;)
-    throw new TypeError(&#x27;&#x22;options&#x22; must be a string or an object&#x27;);
+  if (typeof options !== 'object')
+    throw new TypeError('"options" must be a string or an object');
   nullCheck(path);
   return binding.readdir(pathModule._makeLong(path), options.encoding);
 }</pre></li>
@@ -3313,14 +3306,14 @@ module) you can do this:
     <ul>
     <li>description and source-code<pre class="apidocCodePre">readlink = function (path, options, callback) {
   options = options || {};
-  if (typeof options === &#x27;function&#x27;) {
+  if (typeof options === 'function') {
     callback = options;
     options = {};
-  } else if (typeof options === &#x27;string&#x27;) {
+  } else if (typeof options === 'string') {
     options = {encoding: options};
   }
-  if (typeof options !== &#x27;object&#x27;)
-    throw new TypeError(&#x27;&#x22;options&#x22; must be a string or an object&#x27;);
+  if (typeof options !== 'object')
+    throw new TypeError('"options" must be a string or an object');
   callback = makeCallback(callback);
   if (!nullCheck(path, callback)) return;
   var req = new FSReqWrap();
@@ -3341,10 +3334,10 @@ module) you can do this:
     <ul>
     <li>description and source-code<pre class="apidocCodePre">readlinkSync = function (path, options) {
   options = options || {};
-  if (typeof options === &#x27;string&#x27;)
+  if (typeof options === 'string')
     options = {encoding: options};
-  if (typeof options !== &#x27;object&#x27;)
-    throw new TypeError(&#x27;&#x22;options&#x22; must be a string or an object&#x27;);
+  if (typeof options !== 'object')
+    throw new TypeError('"options" must be a string or an object');
   nullCheck(path);
   return binding.readlink(pathModule._makeLong(path), options.encoding);
 }</pre></li>
@@ -3361,24 +3354,24 @@ module) you can do this:
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function realpath(p, options, callback) {
-  if (typeof callback !== &#x27;function&#x27;) {
+  if (typeof callback !== 'function') {
     callback = maybeCallback(options);
     options = {};
   }
 
   if (!options) {
     options = {};
-  } else if (typeof options === &#x27;function&#x27;) {
+  } else if (typeof options === 'function') {
     options = {};
-  } else if (typeof options === &#x27;string&#x27;) {
+  } else if (typeof options === 'string') {
     options = {encoding: options};
-  } else if (typeof options !== &#x27;object&#x27;) {
-    throw new TypeError(&#x27;&#x22;options&#x22; must be a string or an object&#x27;);
+  } else if (typeof options !== 'object') {
+    throw new TypeError('"options" must be a string or an object');
   }
   if (!nullCheck(p, callback))
     return;
 
-  p = p.toString(&#x27;utf8&#x27;);
+  p = p.toString('utf8');
   p = pathModule.resolve(p);
 
   const seenLinks = {};
@@ -3401,10 +3394,10 @@ module) you can do this:
     pos = m[0].length;
     current = m[0];
     base = m[0];
-    previous = &#x27;&#x27;;
+    previous = '';
 
     // On windows, check that the root exists. On unix there is no need.
-    if (isWindows &#x26;&#x26; !knownHard[base]) {
+    if (isWindows &amp;&amp; !knownHard[base]) {
       fs.lstat(base, function(err) {
         if (err) return callback(err);
         knownHard[base] = true;
@@ -3419,7 +3412,7 @@ module) you can do this:
   // values
   function LOOP() {
     // stop if scanned past end of path
-    if (pos &#x3e;= p.length) {
+    if (pos &gt;= p.length) {
       return callback(null, encodeRealpathResult(p, options));
     }
 
@@ -3448,7 +3441,7 @@ module) you can do this:
       return process.nextTick(LOOP);
     }
 
-    // stat &#x26; read the link if not read before
+    // stat &amp; read the link if not read before
     // call gotTarget as soon as the link target is known
     // dev/ino always return 0 on windows, so skip the check.
     let id;
@@ -3496,13 +3489,13 @@ module) you can do this:
     <li>description and source-code<pre class="apidocCodePre">function realpathSync(p, options) {
   if (!options)
     options = {};
-  else if (typeof options === &#x27;string&#x27;)
+  else if (typeof options === 'string')
     options = {encoding: options};
-  else if (typeof options !== &#x27;object&#x27;)
-    throw new TypeError(&#x27;&#x22;options&#x22; must be a string or an object&#x27;);
+  else if (typeof options !== 'object')
+    throw new TypeError('"options" must be a string or an object');
   nullCheck(p);
 
-  p = p.toString(&#x27;utf8&#x27;);
+  p = p.toString('utf8');
   p = pathModule.resolve(p);
 
   const seenLinks = {};
@@ -3510,7 +3503,7 @@ module) you can do this:
   const cache = options[realpathCacheKey];
   const original = p;
 
-  const maybeCachedResult = cache &#x26;&#x26; cache.get(p);
+  const maybeCachedResult = cache &amp;&amp; cache.get(p);
   if (maybeCachedResult) {
     return maybeCachedResult;
   }
@@ -3532,10 +3525,10 @@ module) you can do this:
     pos = m[0].length;
     current = m[0];
     base = m[0];
-    previous = &#x27;&#x27;;
+    previous = '';
 
     // On windows, check that the root exists. On unix there is no need.
-    if (isWindows &#x26;&#x26; !knownHard[base]) {
+    if (isWindows &amp;&amp; !knownHard[base]) {
       fs.lstatSync(base);
       knownHard[base] = true;
     }
@@ -3544,7 +3537,7 @@ module) you can do this:
   // walk down the path, swapping out linked pathparts for their real
   // values
   // NB: p.length changes.
-  while (pos &#x3c; p.length) {
+  while (pos &lt; p.length) {
     // find the next part
     nextPartRe.lastIndex = pos;
     var result = nextPartRe.exec(p);
@@ -3554,12 +3547,12 @@ module) you can do this:
     pos = nextPartRe.lastIndex;
 
     // continue if not a symlink
-    if (knownHard[base] || (cache &#x26;&#x26; cache.get(base) === base)) {
+    if (knownHard[base] || (cache &amp;&amp; cache.get(base) === base)) {
       continue;
     }
 
     var resolvedLink;
-    const maybeCachedResolved = cache &#x26;&#x26; cache.get(base);
+    const maybeCachedResolved = cache &amp;&amp; cache.get(base);
     if (maybeCachedResolved) {
       resolvedLink = maybeCachedResolved;
     } else {
@@ -3570,7 +3563,7 @@ module) you can do this:
         continue;
       }
 
-      // read the link if it wasn&#x27;t read before
+      // read the link if it wasn't read before
       // dev/ino always return 0 on windows, so skip the check.
       let linkTarget = null;
       let id;
@@ -3688,8 +3681,8 @@ module) you can do this:
     <li>description and source-code<pre class="apidocCodePre">stat = function (target, cb) {
   return orig.call(fs, target, function (er, stats) {
     if (!stats) return cb.apply(this, arguments)
-    if (stats.uid &#x3c; 0) stats.uid += 0x100000000
-    if (stats.gid &#x3c; 0) stats.gid += 0x100000000
+    if (stats.uid &lt; 0) stats.uid += 0x100000000
+    if (stats.gid &lt; 0) stats.gid += 0x100000000
     if (cb) cb.apply(this, arguments)
   })
 }</pre></li>
@@ -3698,17 +3691,17 @@ var start = Date.now()
 var backoff = 0;
 fs$rename(from, to, function CB (er) {
   if (er
-      &#x26;&#x26; (er.code === &#x22;EACCES&#x22; || er.code === &#x22;EPERM&#x22;)
-      &#x26;&#x26; Date.now() - start &#x3c; 60000) {
+      &amp;&amp; (er.code === "EACCES" || er.code === "EPERM")
+      &amp;&amp; Date.now() - start &lt; 60000) {
     setTimeout(function() {
       fs.<span class="apidocCodeKeywordSpan">stat</span>(to, function (stater, st) {
-        if (stater &#x26;&#x26; stater.code === &#x22;ENOENT&#x22;)
+        if (stater &amp;&amp; stater.code === "ENOENT")
           fs$rename(from, to, CB);
         else
           cb(er)
       })
     }, backoff)
-    if (backoff &#x3c; 100)
+    if (backoff &lt; 100)
 ...</pre></li>
     </ul>
 
@@ -3723,8 +3716,8 @@ fs$rename(from, to, function CB (er) {
     <ul>
     <li>description and source-code<pre class="apidocCodePre">statSync = function (target) {
   var stats = orig.call(fs, target)
-  if (stats.uid &#x3c; 0) stats.uid += 0x100000000
-  if (stats.gid &#x3c; 0) stats.gid += 0x100000000
+  if (stats.uid &lt; 0) stats.uid += 0x100000000
+  if (stats.gid &lt; 0) stats.gid += 0x100000000
   return stats;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
@@ -3740,7 +3733,7 @@ fs$rename(from, to, function CB (er) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">symlink = function (target, path, type_, callback_) {
-  var type = (typeof type_ === &#x27;string&#x27; ? type_ : null);
+  var type = (typeof type_ === 'string' ? type_ : null);
   var callback = makeCallback(arguments[arguments.length - 1]);
 
   if (!nullCheck(target, callback)) return;
@@ -3767,7 +3760,7 @@ fs$rename(from, to, function CB (er) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">symlinkSync = function (target, path, type) {
-  type = (typeof type === &#x27;string&#x27; ? type : null);
+  type = (typeof type === 'string' ? type : null);
 
   nullCheck(target);
   nullCheck(path);
@@ -3789,10 +3782,10 @@ fs$rename(from, to, function CB (er) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">truncate = function (path, len, callback) {
-  if (typeof path === &#x27;number&#x27;) {
+  if (typeof path === 'number') {
     return fs.ftruncate(path, len, callback);
   }
-  if (typeof len === &#x27;function&#x27;) {
+  if (typeof len === 'function') {
     callback = len;
     len = 0;
   } else if (len === undefined) {
@@ -3800,7 +3793,7 @@ fs$rename(from, to, function CB (er) {
   }
 
   callback = maybeCallback(callback);
-  fs.open(path, &#x27;r+&#x27;, function(er, fd) {
+  fs.open(path, 'r+', function(er, fd) {
     if (er) return callback(er);
     var req = new FSReqWrap();
     req.oncomplete = function oncomplete(er) {
@@ -3824,7 +3817,7 @@ fs$rename(from, to, function CB (er) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">truncateSync = function (path, len) {
-  if (typeof path === &#x27;number&#x27;) {
+  if (typeof path === 'number') {
     // legacy
     return fs.ftruncateSync(path, len);
   }
@@ -3832,7 +3825,7 @@ fs$rename(from, to, function CB (er) {
     len = 0;
   }
   // allow error to be thrown, but still close fd.
-  var fd = fs.openSync(path, &#x27;r+&#x27;);
+  var fd = fs.openSync(path, 'r+');
   var ret;
 
   try {
@@ -3896,13 +3889,13 @@ fs$rename(from, to, function CB (er) {
 
   if (stat === undefined) return;
 
-  if (typeof listener === &#x27;function&#x27;) {
-    stat.removeListener(&#x27;change&#x27;, listener);
+  if (typeof listener === 'function') {
+    stat.removeListener('change', listener);
   } else {
-    stat.removeAllListeners(&#x27;change&#x27;);
+    stat.removeAllListeners('change');
   }
 
-  if (stat.listenerCount(&#x27;change&#x27;) === 0) {
+  if (stat.listenerCount('change') === 0) {
     stat.stop();
     statWatchers.delete(filename);
   }
@@ -3963,14 +3956,14 @@ fs$rename(from, to, function CB (er) {
   nullCheck(filename);
 
   options = options || {};
-  if (typeof options === &#x27;function&#x27;) {
+  if (typeof options === 'function') {
     listener = options;
     options = {};
-  } else if (typeof options === &#x27;string&#x27;) {
+  } else if (typeof options === 'string') {
     options = {encoding: options};
   }
-  if (typeof options !== &#x27;object&#x27;)
-    throw new TypeError(&#x27;&#x22;options&#x22; must be a string or an object&#x27;);
+  if (typeof options !== 'object')
+    throw new TypeError('"options" must be a string or an object');
 
   if (options.persistent === undefined) options.persistent = true;
   if (options.recursive === undefined) options.recursive = false;
@@ -3982,7 +3975,7 @@ fs$rename(from, to, function CB (er) {
                 options.encoding);
 
   if (listener) {
-    watcher.addListener(&#x27;change&#x27;, listener);
+    watcher.addListener('change', listener);
   }
 
   return watcher;
@@ -4005,22 +3998,22 @@ fs$rename(from, to, function CB (er) {
   var stat;
 
   var defaults = {
-    // Poll interval in milliseconds. 5007 is what libev used to use. It&#x27;s
-    // a little on the slow side but let&#x27;s stick with it for now to keep
+    // Poll interval in milliseconds. 5007 is what libev used to use. It's
+    // a little on the slow side but let's stick with it for now to keep
     // behavioral changes to a minimum.
     interval: 5007,
     persistent: true
   };
 
-  if (options !== null &#x26;&#x26; typeof options === &#x27;object&#x27;) {
+  if (options !== null &amp;&amp; typeof options === 'object') {
     options = util._extend(defaults, options);
   } else {
     listener = options;
     options = defaults;
   }
 
-  if (typeof listener !== &#x27;function&#x27;) {
-    throw new Error(&#x27;&#x22;watchFile()&#x22; requires a listener function&#x27;);
+  if (typeof listener !== 'function') {
+    throw new Error('"watchFile()" requires a listener function');
   }
 
   stat = statWatchers.get(filename);
@@ -4031,7 +4024,7 @@ fs$rename(from, to, function CB (er) {
     statWatchers.set(filename, stat);
   }
 
-  stat.addListener(&#x27;change&#x27;, listener);
+  stat.addListener('change', listener);
   return stat;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
@@ -4048,7 +4041,7 @@ fs$rename(from, to, function CB (er) {
     <ul>
     <li>description and source-code<pre class="apidocCodePre">write = function (fd, buffer, offset, length, position, callback) {
   function wrapper(err, written) {
-    // Retain a reference to buffer so that it can&#x27;t be GC&#x27;ed too soon.
+    // Retain a reference to buffer so that it can't be GC'ed too soon.
     callback(err, written || 0, buffer);
   }
 
@@ -4057,7 +4050,7 @@ fs$rename(from, to, function CB (er) {
 
   if (buffer instanceof Buffer) {
     // if no position is passed then assume null
-    if (typeof position === &#x27;function&#x27;) {
+    if (typeof position === 'function') {
       callback = position;
       position = null;
     }
@@ -4065,16 +4058,16 @@ fs$rename(from, to, function CB (er) {
     return binding.writeBuffer(fd, buffer, offset, length, position, req);
   }
 
-  if (typeof buffer !== &#x27;string&#x27;)
-    buffer += &#x27;&#x27;;
-  if (typeof position !== &#x27;function&#x27;) {
-    if (typeof offset === &#x27;function&#x27;) {
+  if (typeof buffer !== 'string')
+    buffer += '';
+  if (typeof position !== 'function') {
+    if (typeof offset === 'function') {
       position = offset;
       offset = null;
     } else {
       position = length;
     }
-    length = &#x27;utf8&#x27;;
+    length = 'utf8';
   }
   callback = maybeCallback(position);
   return binding.writeString(fd, buffer, offset, length, req);
@@ -4092,17 +4085,17 @@ fs$rename(from, to, function CB (er) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function writeFile(path, data, options, cb) {
-  if (typeof options === &#x27;function&#x27;)
+  if (typeof options === 'function')
     cb = options, options = null
 
   return go$writeFile(path, data, options, cb)
 
   function go$writeFile (path, data, options, cb) {
     return fs$writeFile(path, data, options, function (err) {
-      if (err &#x26;&#x26; (err.code === &#x27;EMFILE&#x27; || err.code === &#x27;ENFILE&#x27;))
+      if (err &amp;&amp; (err.code === 'EMFILE' || err.code === 'ENFILE'))
         enqueue([go$writeFile, [path, data, options, cb]])
       else {
-        if (typeof cb === &#x27;function&#x27;)
+        if (typeof cb === 'function')
           cb.apply(this, arguments)
         retry()
       }
@@ -4123,27 +4116,27 @@ fs$rename(from, to, function CB (er) {
     <ul>
     <li>description and source-code<pre class="apidocCodePre">writeFileSync = function (path, data, options) {
   if (!options) {
-    options = { encoding: &#x27;utf8&#x27;, mode: 0o666, flag: &#x27;w&#x27; };
-  } else if (typeof options === &#x27;string&#x27;) {
-    options = { encoding: options, mode: 0o666, flag: &#x27;w&#x27; };
-  } else if (typeof options !== &#x27;object&#x27;) {
+    options = { encoding: 'utf8', mode: 0o666, flag: 'w' };
+  } else if (typeof options === 'string') {
+    options = { encoding: options, mode: 0o666, flag: 'w' };
+  } else if (typeof options !== 'object') {
     throwOptionsError(options);
   }
 
   assertEncoding(options.encoding);
 
-  var flag = options.flag || &#x27;w&#x27;;
+  var flag = options.flag || 'w';
   var isUserFd = isFd(path); // file descriptor ownership
   var fd = isUserFd ? path : fs.openSync(path, flag, options.mode);
 
   if (!(data instanceof Buffer)) {
-    data = Buffer.from(&#x27;&#x27; + data, options.encoding || &#x27;utf8&#x27;);
+    data = Buffer.from('' + data, options.encoding || 'utf8');
   }
   var offset = 0;
   var length = data.length;
   var position = /a/.test(flag) ? null : 0;
   try {
-    while (length &#x3e; 0) {
+    while (length &gt; 0) {
       var written = fs.writeSync(fd, data, offset, length, position);
       offset += written;
       length -= written;
@@ -4173,8 +4166,8 @@ fs$rename(from, to, function CB (er) {
       position = null;
     return binding.writeBuffer(fd, buffer, offset, length, position);
   }
-  if (typeof buffer !== &#x27;string&#x27;)
-    buffer += &#x27;&#x27;;
+  if (typeof buffer !== 'string')
+    buffer += '';
   if (offset === undefined)
     offset = null;
   return binding.writeString(fd, buffer, offset, length, position);
@@ -4244,10 +4237,10 @@ fs$rename(from, to, function CB (er) {
       if (that.autoClose)
         that.destroy()
 
-      that.emit(&#x27;error&#x27;, err)
+      that.emit('error', err)
     } else {
       that.fd = fd
-      that.emit(&#x27;open&#x27;, fd)
+      that.emit('open', fd)
       that.read()
     }
   })
@@ -4262,7 +4255,7 @@ return;
 
     fs.<span class="apidocCodeKeywordSpan">open</span>(this.path, this.flags, this.mode, function (err, fd) {
 if (err) {
-  self.emit(&#x27;error&#x27;, err);
+  self.emit('error', err);
   self.readable = false;
   return;
 }
@@ -4319,7 +4312,7 @@ self.fd = fd;
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">_checkModeProperty = function (property) {
-  return ((this.mode &#x26; constants.S_IFMT) === property);
+  return ((this.mode &amp; constants.S_IFMT) === property);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -4471,10 +4464,10 @@ self.fd = fd;
   open(that.path, that.flags, that.mode, function (err, fd) {
     if (err) {
       that.destroy()
-      that.emit(&#x27;error&#x27;, err)
+      that.emit('error', err)
     } else {
       that.fd = fd
-      that.emit(&#x27;open&#x27;, fd)
+      that.emit('open', fd)
     }
   })
 }</pre></li>
@@ -4488,7 +4481,7 @@ return;
 
     fs.<span class="apidocCodeKeywordSpan">open</span>(this.path, this.flags, this.mode, function (err, fd) {
 if (err) {
-  self.emit(&#x27;error&#x27;, err);
+  self.emit('error', err);
   self.readable = false;
   return;
 }
@@ -4612,11 +4605,11 @@ self.fd = fd;
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function toUnixTimestamp(time) {
-  if (typeof time === &#x27;string&#x27; &#x26;&#x26; +time == time) {
+  if (typeof time === 'string' &amp;&amp; +time == time) {
     return +time;
   }
-  if (typeof time === &#x27;number&#x27;) {
-    if (!Number.isFinite(time) || time &#x3c; 0) {
+  if (typeof time === 'number') {
+    if (!Number.isFinite(time) || time &lt; 0) {
       return Date.now() / 1000;
     }
     return time;
@@ -4625,7 +4618,7 @@ self.fd = fd;
     // convert to 123.456 UNIX timestamp
     return time.getTime() / 1000;
   }
-  throw new Error(&#x27;Cannot parse time: &#x27; + time);
+  throw new Error('Cannot parse time: ' + time);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -4640,11 +4633,11 @@ self.fd = fd;
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">access = function (path, mode, callback) {
-  if (typeof mode === &#x27;function&#x27;) {
+  if (typeof mode === 'function') {
     callback = mode;
     mode = fs.F_OK;
-  } else if (typeof callback !== &#x27;function&#x27;) {
-    throw new TypeError(&#x27;&#x22;callback&#x22; argument must be a function&#x27;);
+  } else if (typeof callback !== 'function') {
+    throw new TypeError('"callback" argument must be a function');
   }
 
   if (!nullCheck(path, callback))
@@ -4690,17 +4683,17 @@ self.fd = fd;
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function appendFile(path, data, options, cb) {
-  if (typeof options === &#x27;function&#x27;)
+  if (typeof options === 'function')
     cb = options, options = null
 
   return go$appendFile(path, data, options, cb)
 
   function go$appendFile (path, data, options, cb) {
     return fs$appendFile(path, data, options, function (err) {
-      if (err &#x26;&#x26; (err.code === &#x27;EMFILE&#x27; || err.code === &#x27;ENFILE&#x27;))
+      if (err &amp;&amp; (err.code === 'EMFILE' || err.code === 'ENFILE'))
         enqueue([go$appendFile, [path, data, options, cb]])
       else {
-        if (typeof cb === &#x27;function&#x27;)
+        if (typeof cb === 'function')
           cb.apply(this, arguments)
         retry()
       }
@@ -4721,19 +4714,19 @@ self.fd = fd;
     <ul>
     <li>description and source-code<pre class="apidocCodePre">appendFileSync = function (path, data, options) {
   if (!options) {
-    options = { encoding: &#x27;utf8&#x27;, mode: 0o666, flag: &#x27;a&#x27; };
-  } else if (typeof options === &#x27;string&#x27;) {
-    options = { encoding: options, mode: 0o666, flag: &#x27;a&#x27; };
-  } else if (typeof options !== &#x27;object&#x27;) {
+    options = { encoding: 'utf8', mode: 0o666, flag: 'a' };
+  } else if (typeof options === 'string') {
+    options = { encoding: options, mode: 0o666, flag: 'a' };
+  } else if (typeof options !== 'object') {
     throwOptionsError(options);
   }
 
   if (!options.flag)
-    options = util._extend({ flag: &#x27;a&#x27; }, options);
+    options = util._extend({ flag: 'a' }, options);
 
   // force append behavior when using a supplied file descriptor
   if (isFd(path))
-    options.flag = &#x27;a&#x27;;
+    options.flag = 'a';
 
   fs.writeFileSync(path, data, options);
 }</pre></li>
@@ -4828,7 +4821,7 @@ self.fd = fd;
     if (!err)
       retry()
 
-    if (typeof cb === &#x27;function&#x27;)
+    if (typeof cb === 'function')
       cb.apply(this, arguments)
   })
 }</pre></li>
@@ -4862,13 +4855,13 @@ fs.lchmodSync = function (path, mode) {
     <ul>
     <li>description and source-code<pre class="apidocCodePre">closeSync = function (fd) {
   // Note that graceful-fs also retries when fs.closeSync() fails.
-  // Looks like a bug to me, although it&#x27;s probably a harmless one.
+  // Looks like a bug to me, although it's probably a harmless one.
   var rval = fs$closeSync.apply(fs, arguments)
   retry()
   return rval
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-    if (typeof cb === &#x27;function&#x27;)
+    if (typeof cb === 'function')
       cb.apply(this, arguments)
   })
 }})(fs.close)
@@ -4876,7 +4869,7 @@ fs.lchmodSync = function (path, mode) {
 module.exports.closeSync =
 fs.closeSync = (function (fs$closeSync) { return function (fd) {
   // Note that graceful-fs also retries when fs.<span class="apidocCodeKeywordSpan">closeSync</span>() fails.
-  // Looks like a bug to me, although it&#x27;s probably a harmless one.
+  // Looks like a bug to me, although it's probably a harmless one.
   var rval = fs$closeSync.apply(fs, arguments)
   retry()
   return rval
@@ -5107,8 +5100,8 @@ try {
     <li>description and source-code<pre class="apidocCodePre">fstat = function (target, cb) {
   return orig.call(fs, target, function (er, stats) {
     if (!stats) return cb.apply(this, arguments)
-    if (stats.uid &#x3c; 0) stats.uid += 0x100000000
-    if (stats.gid &#x3c; 0) stats.gid += 0x100000000
+    if (stats.uid &lt; 0) stats.uid += 0x100000000
+    if (stats.gid &lt; 0) stats.gid += 0x100000000
     if (cb) cb.apply(this, arguments)
   })
 }</pre></li>
@@ -5126,8 +5119,8 @@ try {
     <ul>
     <li>description and source-code<pre class="apidocCodePre">fstatSync = function (target) {
   var stats = orig.call(fs, target)
-  if (stats.uid &#x3c; 0) stats.uid += 0x100000000
-  if (stats.gid &#x3c; 0) stats.gid += 0x100000000
+  if (stats.uid &lt; 0) stats.uid += 0x100000000
+  if (stats.gid &lt; 0) stats.gid += 0x100000000
   return stats;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
@@ -5175,7 +5168,7 @@ try {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">ftruncate = function (fd, len, callback) {
-  if (typeof len === &#x27;function&#x27;) {
+  if (typeof len === 'function') {
     callback = len;
     len = 0;
   } else if (len === undefined) {
@@ -5223,7 +5216,7 @@ try {
   binding.futimes(fd, atime, mtime, req);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-  if (constants.hasOwnProperty(&#x22;O_SYMLINK&#x22;)) {
+  if (constants.hasOwnProperty("O_SYMLINK")) {
 fs.lutimes = function (path, at, mt, cb) {
   fs.open(path, constants.O_SYMLINK, function (er, fd) {
     if (er) {
@@ -5293,17 +5286,17 @@ fs.lutimesSync = function (path, at, mt) {
   var fs$readFile = fs.readFile
   fs.readFile = readFile
   function readFile (path, options, cb) {
-    if (typeof options === &#x27;function&#x27;)
+    if (typeof options === 'function')
       cb = options, options = null
 
     return go$readFile(path, options, cb)
 
     function go$readFile (path, options, cb) {
       return fs$readFile(path, options, function (err) {
-        if (err &#x26;&#x26; (err.code === &#x27;EMFILE&#x27; || err.code === &#x27;ENFILE&#x27;))
+        if (err &amp;&amp; (err.code === 'EMFILE' || err.code === 'ENFILE'))
           enqueue([go$readFile, [path, options, cb]])
         else {
-          if (typeof cb === &#x27;function&#x27;)
+          if (typeof cb === 'function')
             cb.apply(this, arguments)
           retry()
         }
@@ -5314,17 +5307,17 @@ fs.lutimesSync = function (path, at, mt) {
   var fs$writeFile = fs.writeFile
   fs.writeFile = writeFile
   function writeFile (path, data, options, cb) {
-    if (typeof options === &#x27;function&#x27;)
+    if (typeof options === 'function')
       cb = options, options = null
 
     return go$writeFile(path, data, options, cb)
 
     function go$writeFile (path, data, options, cb) {
       return fs$writeFile(path, data, options, function (err) {
-        if (err &#x26;&#x26; (err.code === &#x27;EMFILE&#x27; || err.code === &#x27;ENFILE&#x27;))
+        if (err &amp;&amp; (err.code === 'EMFILE' || err.code === 'ENFILE'))
           enqueue([go$writeFile, [path, data, options, cb]])
         else {
-          if (typeof cb === &#x27;function&#x27;)
+          if (typeof cb === 'function')
             cb.apply(this, arguments)
           retry()
         }
@@ -5336,17 +5329,17 @@ fs.lutimesSync = function (path, at, mt) {
   if (fs$appendFile)
     fs.appendFile = appendFile
   function appendFile (path, data, options, cb) {
-    if (typeof options === &#x27;function&#x27;)
+    if (typeof options === 'function')
       cb = options, options = null
 
     return go$appendFile(path, data, options, cb)
 
     function go$appendFile (path, data, options, cb) {
       return fs$appendFile(path, data, options, function (err) {
-        if (err &#x26;&#x26; (err.code === &#x27;EMFILE&#x27; || err.code === &#x27;ENFILE&#x27;))
+        if (err &amp;&amp; (err.code === 'EMFILE' || err.code === 'ENFILE'))
           enqueue([go$appendFile, [path, data, options, cb]])
         else {
-          if (typeof cb === &#x27;function&#x27;)
+          if (typeof cb === 'function')
             cb.apply(this, arguments)
           retry()
         }
@@ -5358,7 +5351,7 @@ fs.lutimesSync = function (path, at, mt) {
   fs.readdir = readdir
   function readdir (path, options, cb) {
     var args = [path]
-    if (typeof options !== &#x27;function&#x27;) {
+    if (typeof options !== 'function') {
       args.push(options)
     } else {
       cb = options
@@ -5368,13 +5361,13 @@ fs.lutimesSync = function (path, at, mt) {
     return go$readdir(args)
 
     function go$readdir$cb (err, files) {
-      if (files &#x26;&#x26; files.sort)
+      if (files &amp;&amp; files.sort)
         files.sort()
 
-      if (err &#x26;&#x26; (err.code === &#x27;EMFILE&#x27; || err.code === &#x27;ENFILE&#x27;))
+      if (err &amp;&amp; (err.code === 'EMFILE' || err.code === 'ENFILE'))
         enqueue([go$readdir, [args]])
       else {
-        if (typeof cb === &#x27;function&#x27;)
+        if (typeof cb === 'function')
           cb.apply(this, arguments)
         retry()
       }
@@ -5385,7 +5378,7 @@ fs.lutimesSync = function (path, at, mt) {
     return fs$readdir.apply(fs, args)
   }
 
-  if (process.version.substr(0, 4) === &#x27;v0.8&#x27;) {
+  if (process.version.substr(0, 4) === 'v0.8') {
     var legStreams = legacy(fs)
     ReadStream = legStreams.ReadStream
     WriteStream = legStreams.WriteStream
@@ -5416,10 +5409,10 @@ fs.lutimesSync = function (path, at, mt) {
         if (that.autoClose)
           that.destroy()
 
-        that.emit(&#x27;error&#x27;, err)
+        that.emit('error', err)
       } else {
         that.fd = fd
-        that.emit(&#x27;open&#x27;, fd)
+        that.emit('open', fd)
         that.read()
       }
     })
@@ -5436,8 +5429,8 @@ module) you can do this:
 
 ```javascript
 // Make sure to read the caveat below.
-var realFs = require(&#x27;fs&#x27;)
-var gracefulFs = require(&#x27;graceful-fs&#x27;)
+var realFs = require('fs')
+var gracefulFs = require('graceful-fs')
 gracefulFs.<span class="apidocCodeKeywordSpan">gracefulify</span>(realFs)
 ```
 
@@ -5558,8 +5551,8 @@ delays in other parts of the program.
     <li>description and source-code<pre class="apidocCodePre">lstat = function (target, cb) {
   return orig.call(fs, target, function (er, stats) {
     if (!stats) return cb.apply(this, arguments)
-    if (stats.uid &#x3c; 0) stats.uid += 0x100000000
-    if (stats.gid &#x3c; 0) stats.gid += 0x100000000
+    if (stats.uid &lt; 0) stats.uid += 0x100000000
+    if (stats.gid &lt; 0) stats.gid += 0x100000000
     if (cb) cb.apply(this, arguments)
   })
 }</pre></li>
@@ -5577,8 +5570,8 @@ delays in other parts of the program.
     <ul>
     <li>description and source-code<pre class="apidocCodePre">lstatSync = function (target) {
   var stats = orig.call(fs, target)
-  if (stats.uid &#x3c; 0) stats.uid += 0x100000000
-  if (stats.gid &#x3c; 0) stats.gid += 0x100000000
+  if (stats.uid &lt; 0) stats.uid += 0x100000000
+  if (stats.gid &lt; 0) stats.gid += 0x100000000
   return stats;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
@@ -5620,7 +5613,7 @@ delays in other parts of the program.
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">mkdir = function (path, mode, callback) {
-  if (typeof mode === &#x27;function&#x27;) callback = mode;
+  if (typeof mode === 'function') callback = mode;
   callback = makeCallback(callback);
   if (!nullCheck(path, callback)) return;
   var req = new FSReqWrap();
@@ -5659,18 +5652,18 @@ delays in other parts of the program.
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">mkdtemp = function (prefix, options, callback) {
-  if (!prefix || typeof prefix !== &#x27;string&#x27;)
-    throw new TypeError(&#x27;filename prefix is required&#x27;);
+  if (!prefix || typeof prefix !== 'string')
+    throw new TypeError('filename prefix is required');
 
   options = options || {};
-  if (typeof options === &#x27;function&#x27;) {
+  if (typeof options === 'function') {
     callback = options;
     options = {};
-  } else if (typeof options === &#x27;string&#x27;) {
+  } else if (typeof options === 'string') {
     options = {encoding: options};
   }
-  if (typeof options !== &#x27;object&#x27;)
-    throw new TypeError(&#x27;&#x22;options&#x22; must be a string or an object&#x27;);
+  if (typeof options !== 'object')
+    throw new TypeError('"options" must be a string or an object');
 
   callback = makeCallback(callback);
   if (!nullCheck(prefix, callback)) {
@@ -5680,7 +5673,7 @@ delays in other parts of the program.
   var req = new FSReqWrap();
   req.oncomplete = callback;
 
-  binding.mkdtemp(prefix + &#x27;XXXXXX&#x27;, options.encoding, req);
+  binding.mkdtemp(prefix + 'XXXXXX', options.encoding, req);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -5695,17 +5688,17 @@ delays in other parts of the program.
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">mkdtempSync = function (prefix, options) {
-  if (!prefix || typeof prefix !== &#x27;string&#x27;)
-    throw new TypeError(&#x27;filename prefix is required&#x27;);
+  if (!prefix || typeof prefix !== 'string')
+    throw new TypeError('filename prefix is required');
 
   options = options || {};
-  if (typeof options === &#x27;string&#x27;)
+  if (typeof options === 'string')
     options = {encoding: options};
-  if (typeof options !== &#x27;object&#x27;)
-    throw new TypeError(&#x27;&#x22;options&#x22; must be a string or an object&#x27;);
+  if (typeof options !== 'object')
+    throw new TypeError('"options" must be a string or an object');
   nullCheck(prefix);
 
-  return binding.mkdtemp(prefix + &#x27;XXXXXX&#x27;, options.encoding);
+  return binding.mkdtemp(prefix + 'XXXXXX', options.encoding);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -5720,17 +5713,17 @@ delays in other parts of the program.
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function open(path, flags, mode, cb) {
-  if (typeof mode === &#x27;function&#x27;)
+  if (typeof mode === 'function')
     cb = mode, mode = null
 
   return go$open(path, flags, mode, cb)
 
   function go$open (path, flags, mode, cb) {
     return fs$open(path, flags, mode, function (err, fd) {
-      if (err &#x26;&#x26; (err.code === &#x27;EMFILE&#x27; || err.code === &#x27;ENFILE&#x27;))
+      if (err &amp;&amp; (err.code === 'EMFILE' || err.code === 'ENFILE'))
         enqueue([go$open, [path, flags, mode, cb]])
       else {
-        if (typeof cb === &#x27;function&#x27;)
+        if (typeof cb === 'function')
           cb.apply(this, arguments)
         retry()
       }
@@ -5747,7 +5740,7 @@ return;
 
     fs.<span class="apidocCodeKeywordSpan">open</span>(this.path, this.flags, this.mode, function (err, fd) {
 if (err) {
-  self.emit(&#x27;error&#x27;, err);
+  self.emit('error', err);
   self.readable = false;
   return;
 }
@@ -5800,10 +5793,10 @@ try {
     <ul>
     <li>description and source-code<pre class="apidocCodePre">read = function (fd, buffer, offset, length, position, callback_) {
   var callback
-  if (callback_ &#x26;&#x26; typeof callback_ === &#x27;function&#x27;) {
+  if (callback_ &amp;&amp; typeof callback_ === 'function') {
     var eagCounter = 0
     callback = function (er, _, __) {
-      if (er &#x26;&#x26; er.code === &#x27;EAGAIN&#x27; &#x26;&#x26; eagCounter &#x3c; 10) {
+      if (er &amp;&amp; er.code === 'EAGAIN' &amp;&amp; eagCounter &lt; 10) {
         eagCounter ++
         return fs$read.call(fs, fd, buffer, offset, length, position, callback)
       }
@@ -5816,10 +5809,10 @@ try {
       if (that.autoClose)
         that.destroy()
 
-      that.emit(&#x27;error&#x27;, err)
+      that.emit('error', err)
     } else {
       that.fd = fd
-      that.emit(&#x27;open&#x27;, fd)
+      that.emit('open', fd)
       that.<span class="apidocCodeKeywordSpan">read</span>()
     }
   })
@@ -5841,17 +5834,17 @@ function WriteStream (path, options) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function readFile(path, options, cb) {
-  if (typeof options === &#x27;function&#x27;)
+  if (typeof options === 'function')
     cb = options, options = null
 
   return go$readFile(path, options, cb)
 
   function go$readFile (path, options, cb) {
     return fs$readFile(path, options, function (err) {
-      if (err &#x26;&#x26; (err.code === &#x27;EMFILE&#x27; || err.code === &#x27;ENFILE&#x27;))
+      if (err &amp;&amp; (err.code === 'EMFILE' || err.code === 'ENFILE'))
         enqueue([go$readFile, [path, options, cb]])
       else {
-        if (typeof cb === &#x27;function&#x27;)
+        if (typeof cb === 'function')
           cb.apply(this, arguments)
         retry()
       }
@@ -5872,17 +5865,17 @@ function WriteStream (path, options) {
     <ul>
     <li>description and source-code<pre class="apidocCodePre">readFileSync = function (path, options) {
   if (!options) {
-    options = { encoding: null, flag: &#x27;r&#x27; };
-  } else if (typeof options === &#x27;string&#x27;) {
-    options = { encoding: options, flag: &#x27;r&#x27; };
-  } else if (typeof options !== &#x27;object&#x27;) {
+    options = { encoding: null, flag: 'r' };
+  } else if (typeof options === 'string') {
+    options = { encoding: options, flag: 'r' };
+  } else if (typeof options !== 'object') {
     throwOptionsError(options);
   }
 
   var encoding = options.encoding;
   assertEncoding(encoding);
 
-  var flag = options.flag || &#x27;r&#x27;;
+  var flag = options.flag || 'r';
   var isUserFd = isFd(path); // file descriptor ownership
   var fd = isUserFd ? path : fs.openSync(path, flag, 0o666);
 
@@ -5904,7 +5897,7 @@ function WriteStream (path, options) {
     do {
       bytesRead = tryReadSync(fd, isUserFd, buffer, pos, size - pos);
       pos += bytesRead;
-    } while (bytesRead !== 0 &#x26;&#x26; pos &#x3c; size);
+    } while (bytesRead !== 0 &amp;&amp; pos &lt; size);
   } else {
     do {
       // the kernel lies about many files.
@@ -5924,7 +5917,7 @@ function WriteStream (path, options) {
   if (size === 0) {
     // data was collected into the buffers list.
     buffer = Buffer.concat(buffers, pos);
-  } else if (pos &#x3c; size) {
+  } else if (pos &lt; size) {
     buffer = buffer.slice(0, pos);
   }
 
@@ -5936,10 +5929,10 @@ function WriteStream (path, options) {
 
 ```javascript
 // use just like fs
-var fs = require(&#x27;graceful-fs&#x27;)
+var fs = require('graceful-fs')
 
 // now go and do stuff with it...
-fs.<span class="apidocCodeKeywordSpan">readFileSync</span>(&#x27;some-file-or-whatever&#x27;)
+fs.<span class="apidocCodeKeywordSpan">readFileSync</span>('some-file-or-whatever')
 ```
 
 ## Global Patching
@@ -5964,7 +5957,7 @@ module) you can do this:
     try {
       return fs$readSync.call(fs, fd, buffer, offset, length, position)
     } catch (er) {
-      if (er.code === &#x27;EAGAIN&#x27; &#x26;&#x26; eagCounter &#x3c; 10) {
+      if (er.code === 'EAGAIN' &amp;&amp; eagCounter &lt; 10) {
         eagCounter ++
         continue
       }
@@ -5986,7 +5979,7 @@ module) you can do this:
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function readdir(path, options, cb) {
   var args = [path]
-  if (typeof options !== &#x27;function&#x27;) {
+  if (typeof options !== 'function') {
     args.push(options)
   } else {
     cb = options
@@ -5996,13 +5989,13 @@ module) you can do this:
   return go$readdir(args)
 
   function go$readdir$cb (err, files) {
-    if (files &#x26;&#x26; files.sort)
+    if (files &amp;&amp; files.sort)
       files.sort()
 
-    if (err &#x26;&#x26; (err.code === &#x27;EMFILE&#x27; || err.code === &#x27;ENFILE&#x27;))
+    if (err &amp;&amp; (err.code === 'EMFILE' || err.code === 'ENFILE'))
       enqueue([go$readdir, [args]])
     else {
-      if (typeof cb === &#x27;function&#x27;)
+      if (typeof cb === 'function')
         cb.apply(this, arguments)
       retry()
     }
@@ -6022,10 +6015,10 @@ module) you can do this:
     <ul>
     <li>description and source-code<pre class="apidocCodePre">readdirSync = function (path, options) {
   options = options || {};
-  if (typeof options === &#x27;string&#x27;)
+  if (typeof options === 'string')
     options = {encoding: options};
-  if (typeof options !== &#x27;object&#x27;)
-    throw new TypeError(&#x27;&#x22;options&#x22; must be a string or an object&#x27;);
+  if (typeof options !== 'object')
+    throw new TypeError('"options" must be a string or an object');
   nullCheck(path);
   return binding.readdir(pathModule._makeLong(path), options.encoding);
 }</pre></li>
@@ -6043,14 +6036,14 @@ module) you can do this:
     <ul>
     <li>description and source-code<pre class="apidocCodePre">readlink = function (path, options, callback) {
   options = options || {};
-  if (typeof options === &#x27;function&#x27;) {
+  if (typeof options === 'function') {
     callback = options;
     options = {};
-  } else if (typeof options === &#x27;string&#x27;) {
+  } else if (typeof options === 'string') {
     options = {encoding: options};
   }
-  if (typeof options !== &#x27;object&#x27;)
-    throw new TypeError(&#x27;&#x22;options&#x22; must be a string or an object&#x27;);
+  if (typeof options !== 'object')
+    throw new TypeError('"options" must be a string or an object');
   callback = makeCallback(callback);
   if (!nullCheck(path, callback)) return;
   var req = new FSReqWrap();
@@ -6071,10 +6064,10 @@ module) you can do this:
     <ul>
     <li>description and source-code<pre class="apidocCodePre">readlinkSync = function (path, options) {
   options = options || {};
-  if (typeof options === &#x27;string&#x27;)
+  if (typeof options === 'string')
     options = {encoding: options};
-  if (typeof options !== &#x27;object&#x27;)
-    throw new TypeError(&#x27;&#x22;options&#x22; must be a string or an object&#x27;);
+  if (typeof options !== 'object')
+    throw new TypeError('"options" must be a string or an object');
   nullCheck(path);
   return binding.readlink(pathModule._makeLong(path), options.encoding);
 }</pre></li>
@@ -6091,24 +6084,24 @@ module) you can do this:
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function realpath(p, options, callback) {
-  if (typeof callback !== &#x27;function&#x27;) {
+  if (typeof callback !== 'function') {
     callback = maybeCallback(options);
     options = {};
   }
 
   if (!options) {
     options = {};
-  } else if (typeof options === &#x27;function&#x27;) {
+  } else if (typeof options === 'function') {
     options = {};
-  } else if (typeof options === &#x27;string&#x27;) {
+  } else if (typeof options === 'string') {
     options = {encoding: options};
-  } else if (typeof options !== &#x27;object&#x27;) {
-    throw new TypeError(&#x27;&#x22;options&#x22; must be a string or an object&#x27;);
+  } else if (typeof options !== 'object') {
+    throw new TypeError('"options" must be a string or an object');
   }
   if (!nullCheck(p, callback))
     return;
 
-  p = p.toString(&#x27;utf8&#x27;);
+  p = p.toString('utf8');
   p = pathModule.resolve(p);
 
   const seenLinks = {};
@@ -6131,10 +6124,10 @@ module) you can do this:
     pos = m[0].length;
     current = m[0];
     base = m[0];
-    previous = &#x27;&#x27;;
+    previous = '';
 
     // On windows, check that the root exists. On unix there is no need.
-    if (isWindows &#x26;&#x26; !knownHard[base]) {
+    if (isWindows &amp;&amp; !knownHard[base]) {
       fs.lstat(base, function(err) {
         if (err) return callback(err);
         knownHard[base] = true;
@@ -6149,7 +6142,7 @@ module) you can do this:
   // values
   function LOOP() {
     // stop if scanned past end of path
-    if (pos &#x3e;= p.length) {
+    if (pos &gt;= p.length) {
       return callback(null, encodeRealpathResult(p, options));
     }
 
@@ -6178,7 +6171,7 @@ module) you can do this:
       return process.nextTick(LOOP);
     }
 
-    // stat &#x26; read the link if not read before
+    // stat &amp; read the link if not read before
     // call gotTarget as soon as the link target is known
     // dev/ino always return 0 on windows, so skip the check.
     let id;
@@ -6226,13 +6219,13 @@ module) you can do this:
     <li>description and source-code<pre class="apidocCodePre">function realpathSync(p, options) {
   if (!options)
     options = {};
-  else if (typeof options === &#x27;string&#x27;)
+  else if (typeof options === 'string')
     options = {encoding: options};
-  else if (typeof options !== &#x27;object&#x27;)
-    throw new TypeError(&#x27;&#x22;options&#x22; must be a string or an object&#x27;);
+  else if (typeof options !== 'object')
+    throw new TypeError('"options" must be a string or an object');
   nullCheck(p);
 
-  p = p.toString(&#x27;utf8&#x27;);
+  p = p.toString('utf8');
   p = pathModule.resolve(p);
 
   const seenLinks = {};
@@ -6240,7 +6233,7 @@ module) you can do this:
   const cache = options[realpathCacheKey];
   const original = p;
 
-  const maybeCachedResult = cache &#x26;&#x26; cache.get(p);
+  const maybeCachedResult = cache &amp;&amp; cache.get(p);
   if (maybeCachedResult) {
     return maybeCachedResult;
   }
@@ -6262,10 +6255,10 @@ module) you can do this:
     pos = m[0].length;
     current = m[0];
     base = m[0];
-    previous = &#x27;&#x27;;
+    previous = '';
 
     // On windows, check that the root exists. On unix there is no need.
-    if (isWindows &#x26;&#x26; !knownHard[base]) {
+    if (isWindows &amp;&amp; !knownHard[base]) {
       fs.lstatSync(base);
       knownHard[base] = true;
     }
@@ -6274,7 +6267,7 @@ module) you can do this:
   // walk down the path, swapping out linked pathparts for their real
   // values
   // NB: p.length changes.
-  while (pos &#x3c; p.length) {
+  while (pos &lt; p.length) {
     // find the next part
     nextPartRe.lastIndex = pos;
     var result = nextPartRe.exec(p);
@@ -6284,12 +6277,12 @@ module) you can do this:
     pos = nextPartRe.lastIndex;
 
     // continue if not a symlink
-    if (knownHard[base] || (cache &#x26;&#x26; cache.get(base) === base)) {
+    if (knownHard[base] || (cache &amp;&amp; cache.get(base) === base)) {
       continue;
     }
 
     var resolvedLink;
-    const maybeCachedResolved = cache &#x26;&#x26; cache.get(base);
+    const maybeCachedResolved = cache &amp;&amp; cache.get(base);
     if (maybeCachedResolved) {
       resolvedLink = maybeCachedResolved;
     } else {
@@ -6300,7 +6293,7 @@ module) you can do this:
         continue;
       }
 
-      // read the link if it wasn&#x27;t read before
+      // read the link if it wasn't read before
       // dev/ino always return 0 on windows, so skip the check.
       let linkTarget = null;
       let id;
@@ -6418,8 +6411,8 @@ module) you can do this:
     <li>description and source-code<pre class="apidocCodePre">stat = function (target, cb) {
   return orig.call(fs, target, function (er, stats) {
     if (!stats) return cb.apply(this, arguments)
-    if (stats.uid &#x3c; 0) stats.uid += 0x100000000
-    if (stats.gid &#x3c; 0) stats.gid += 0x100000000
+    if (stats.uid &lt; 0) stats.uid += 0x100000000
+    if (stats.gid &lt; 0) stats.gid += 0x100000000
     if (cb) cb.apply(this, arguments)
   })
 }</pre></li>
@@ -6428,17 +6421,17 @@ var start = Date.now()
 var backoff = 0;
 fs$rename(from, to, function CB (er) {
   if (er
-      &#x26;&#x26; (er.code === &#x22;EACCES&#x22; || er.code === &#x22;EPERM&#x22;)
-      &#x26;&#x26; Date.now() - start &#x3c; 60000) {
+      &amp;&amp; (er.code === "EACCES" || er.code === "EPERM")
+      &amp;&amp; Date.now() - start &lt; 60000) {
     setTimeout(function() {
       fs.<span class="apidocCodeKeywordSpan">stat</span>(to, function (stater, st) {
-        if (stater &#x26;&#x26; stater.code === &#x22;ENOENT&#x22;)
+        if (stater &amp;&amp; stater.code === "ENOENT")
           fs$rename(from, to, CB);
         else
           cb(er)
       })
     }, backoff)
-    if (backoff &#x3c; 100)
+    if (backoff &lt; 100)
 ...</pre></li>
     </ul>
 
@@ -6453,8 +6446,8 @@ fs$rename(from, to, function CB (er) {
     <ul>
     <li>description and source-code<pre class="apidocCodePre">statSync = function (target) {
   var stats = orig.call(fs, target)
-  if (stats.uid &#x3c; 0) stats.uid += 0x100000000
-  if (stats.gid &#x3c; 0) stats.gid += 0x100000000
+  if (stats.uid &lt; 0) stats.uid += 0x100000000
+  if (stats.gid &lt; 0) stats.gid += 0x100000000
   return stats;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
@@ -6470,7 +6463,7 @@ fs$rename(from, to, function CB (er) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">symlink = function (target, path, type_, callback_) {
-  var type = (typeof type_ === &#x27;string&#x27; ? type_ : null);
+  var type = (typeof type_ === 'string' ? type_ : null);
   var callback = makeCallback(arguments[arguments.length - 1]);
 
   if (!nullCheck(target, callback)) return;
@@ -6497,7 +6490,7 @@ fs$rename(from, to, function CB (er) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">symlinkSync = function (target, path, type) {
-  type = (typeof type === &#x27;string&#x27; ? type : null);
+  type = (typeof type === 'string' ? type : null);
 
   nullCheck(target);
   nullCheck(path);
@@ -6519,10 +6512,10 @@ fs$rename(from, to, function CB (er) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">truncate = function (path, len, callback) {
-  if (typeof path === &#x27;number&#x27;) {
+  if (typeof path === 'number') {
     return fs.ftruncate(path, len, callback);
   }
-  if (typeof len === &#x27;function&#x27;) {
+  if (typeof len === 'function') {
     callback = len;
     len = 0;
   } else if (len === undefined) {
@@ -6530,7 +6523,7 @@ fs$rename(from, to, function CB (er) {
   }
 
   callback = maybeCallback(callback);
-  fs.open(path, &#x27;r+&#x27;, function(er, fd) {
+  fs.open(path, 'r+', function(er, fd) {
     if (er) return callback(er);
     var req = new FSReqWrap();
     req.oncomplete = function oncomplete(er) {
@@ -6554,7 +6547,7 @@ fs$rename(from, to, function CB (er) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">truncateSync = function (path, len) {
-  if (typeof path === &#x27;number&#x27;) {
+  if (typeof path === 'number') {
     // legacy
     return fs.ftruncateSync(path, len);
   }
@@ -6562,7 +6555,7 @@ fs$rename(from, to, function CB (er) {
     len = 0;
   }
   // allow error to be thrown, but still close fd.
-  var fd = fs.openSync(path, &#x27;r+&#x27;);
+  var fd = fs.openSync(path, 'r+');
   var ret;
 
   try {
@@ -6626,13 +6619,13 @@ fs$rename(from, to, function CB (er) {
 
   if (stat === undefined) return;
 
-  if (typeof listener === &#x27;function&#x27;) {
-    stat.removeListener(&#x27;change&#x27;, listener);
+  if (typeof listener === 'function') {
+    stat.removeListener('change', listener);
   } else {
-    stat.removeAllListeners(&#x27;change&#x27;);
+    stat.removeAllListeners('change');
   }
 
-  if (stat.listenerCount(&#x27;change&#x27;) === 0) {
+  if (stat.listenerCount('change') === 0) {
     stat.stop();
     statWatchers.delete(filename);
   }
@@ -6693,14 +6686,14 @@ fs$rename(from, to, function CB (er) {
   nullCheck(filename);
 
   options = options || {};
-  if (typeof options === &#x27;function&#x27;) {
+  if (typeof options === 'function') {
     listener = options;
     options = {};
-  } else if (typeof options === &#x27;string&#x27;) {
+  } else if (typeof options === 'string') {
     options = {encoding: options};
   }
-  if (typeof options !== &#x27;object&#x27;)
-    throw new TypeError(&#x27;&#x22;options&#x22; must be a string or an object&#x27;);
+  if (typeof options !== 'object')
+    throw new TypeError('"options" must be a string or an object');
 
   if (options.persistent === undefined) options.persistent = true;
   if (options.recursive === undefined) options.recursive = false;
@@ -6712,7 +6705,7 @@ fs$rename(from, to, function CB (er) {
                 options.encoding);
 
   if (listener) {
-    watcher.addListener(&#x27;change&#x27;, listener);
+    watcher.addListener('change', listener);
   }
 
   return watcher;
@@ -6735,22 +6728,22 @@ fs$rename(from, to, function CB (er) {
   var stat;
 
   var defaults = {
-    // Poll interval in milliseconds. 5007 is what libev used to use. It&#x27;s
-    // a little on the slow side but let&#x27;s stick with it for now to keep
+    // Poll interval in milliseconds. 5007 is what libev used to use. It's
+    // a little on the slow side but let's stick with it for now to keep
     // behavioral changes to a minimum.
     interval: 5007,
     persistent: true
   };
 
-  if (options !== null &#x26;&#x26; typeof options === &#x27;object&#x27;) {
+  if (options !== null &amp;&amp; typeof options === 'object') {
     options = util._extend(defaults, options);
   } else {
     listener = options;
     options = defaults;
   }
 
-  if (typeof listener !== &#x27;function&#x27;) {
-    throw new Error(&#x27;&#x22;watchFile()&#x22; requires a listener function&#x27;);
+  if (typeof listener !== 'function') {
+    throw new Error('"watchFile()" requires a listener function');
   }
 
   stat = statWatchers.get(filename);
@@ -6761,7 +6754,7 @@ fs$rename(from, to, function CB (er) {
     statWatchers.set(filename, stat);
   }
 
-  stat.addListener(&#x27;change&#x27;, listener);
+  stat.addListener('change', listener);
   return stat;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
@@ -6778,7 +6771,7 @@ fs$rename(from, to, function CB (er) {
     <ul>
     <li>description and source-code<pre class="apidocCodePre">write = function (fd, buffer, offset, length, position, callback) {
   function wrapper(err, written) {
-    // Retain a reference to buffer so that it can&#x27;t be GC&#x27;ed too soon.
+    // Retain a reference to buffer so that it can't be GC'ed too soon.
     callback(err, written || 0, buffer);
   }
 
@@ -6787,7 +6780,7 @@ fs$rename(from, to, function CB (er) {
 
   if (buffer instanceof Buffer) {
     // if no position is passed then assume null
-    if (typeof position === &#x27;function&#x27;) {
+    if (typeof position === 'function') {
       callback = position;
       position = null;
     }
@@ -6795,16 +6788,16 @@ fs$rename(from, to, function CB (er) {
     return binding.writeBuffer(fd, buffer, offset, length, position, req);
   }
 
-  if (typeof buffer !== &#x27;string&#x27;)
-    buffer += &#x27;&#x27;;
-  if (typeof position !== &#x27;function&#x27;) {
-    if (typeof offset === &#x27;function&#x27;) {
+  if (typeof buffer !== 'string')
+    buffer += '';
+  if (typeof position !== 'function') {
+    if (typeof offset === 'function') {
       position = offset;
       offset = null;
     } else {
       position = length;
     }
-    length = &#x27;utf8&#x27;;
+    length = 'utf8';
   }
   callback = maybeCallback(position);
   return binding.writeString(fd, buffer, offset, length, req);
@@ -6822,17 +6815,17 @@ fs$rename(from, to, function CB (er) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function writeFile(path, data, options, cb) {
-  if (typeof options === &#x27;function&#x27;)
+  if (typeof options === 'function')
     cb = options, options = null
 
   return go$writeFile(path, data, options, cb)
 
   function go$writeFile (path, data, options, cb) {
     return fs$writeFile(path, data, options, function (err) {
-      if (err &#x26;&#x26; (err.code === &#x27;EMFILE&#x27; || err.code === &#x27;ENFILE&#x27;))
+      if (err &amp;&amp; (err.code === 'EMFILE' || err.code === 'ENFILE'))
         enqueue([go$writeFile, [path, data, options, cb]])
       else {
-        if (typeof cb === &#x27;function&#x27;)
+        if (typeof cb === 'function')
           cb.apply(this, arguments)
         retry()
       }
@@ -6853,27 +6846,27 @@ fs$rename(from, to, function CB (er) {
     <ul>
     <li>description and source-code<pre class="apidocCodePre">writeFileSync = function (path, data, options) {
   if (!options) {
-    options = { encoding: &#x27;utf8&#x27;, mode: 0o666, flag: &#x27;w&#x27; };
-  } else if (typeof options === &#x27;string&#x27;) {
-    options = { encoding: options, mode: 0o666, flag: &#x27;w&#x27; };
-  } else if (typeof options !== &#x27;object&#x27;) {
+    options = { encoding: 'utf8', mode: 0o666, flag: 'w' };
+  } else if (typeof options === 'string') {
+    options = { encoding: options, mode: 0o666, flag: 'w' };
+  } else if (typeof options !== 'object') {
     throwOptionsError(options);
   }
 
   assertEncoding(options.encoding);
 
-  var flag = options.flag || &#x27;w&#x27;;
+  var flag = options.flag || 'w';
   var isUserFd = isFd(path); // file descriptor ownership
   var fd = isUserFd ? path : fs.openSync(path, flag, options.mode);
 
   if (!(data instanceof Buffer)) {
-    data = Buffer.from(&#x27;&#x27; + data, options.encoding || &#x27;utf8&#x27;);
+    data = Buffer.from('' + data, options.encoding || 'utf8');
   }
   var offset = 0;
   var length = data.length;
   var position = /a/.test(flag) ? null : 0;
   try {
-    while (length &#x3e; 0) {
+    while (length &gt; 0) {
       var written = fs.writeSync(fd, data, offset, length, position);
       offset += written;
       length -= written;
@@ -6903,8 +6896,8 @@ fs$rename(from, to, function CB (er) {
       position = null;
     return binding.writeBuffer(fd, buffer, offset, length, position);
   }
-  if (typeof buffer !== &#x27;string&#x27;)
-    buffer += &#x27;&#x27;;
+  if (typeof buffer !== 'string')
+    buffer += '';
   if (offset === undefined)
     offset = null;
   return binding.writeString(fd, buffer, offset, length, position);
@@ -6931,3 +6924,4 @@ fs$rename(from, to, function CB (er) {
     ]
 </div>
 </div>
+</body></html>
